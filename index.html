@@ -1,0 +1,1530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ALIRY. Flowershop | Luxury Flowers & Floral Gifts</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #914f61;
+      --primary-hover: #733c4c;
+      --accent: #d8a0a6;
+      --bg-cream: #fdfaf7;
+      --card-bg: #ffffff;
+      --text-dark: #3a2e2e;
+      --text-muted: #786666;
+      --border-light: #f0e6e6;
+      --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    /* ELIMINATE TOUCH DELAY & ACCELERATE MOBILE INTERACTIONS */
+    button, .builder-option, input, label, a {
+      touch-action: manipulation;
+      cursor: pointer;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg-cream);
+      color: var(--text-dark);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* TOP ANNOUNCEMENT BAR */
+    .announcement-bar {
+      background: var(--primary);
+      color: white;
+      text-align: center;
+      padding: 10px 15px;
+      font-size: 14px;
+      font-style: italic;
+      font-family: 'Playfair Display', serif;
+      letter-spacing: 2px;
+    }
+
+    /* NAVIGATION */
+    header {
+      position: sticky;
+      top: 0;
+      background: rgba(253, 250, 247, 0.95);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      z-index: 1000;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .nav-main {
+      padding: 12px 8%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .logo-img {
+      height: clamp(55px, 6vw, 75px);
+      width: auto;
+      object-fit: contain;
+      mix-blend-mode: multiply;
+      transition: var(--transition-smooth);
+    }
+
+    .logo-container:hover .logo-img {
+      transform: scale(1.05);
+    }
+
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(26px, 2.3vw, 34px);
+      font-weight: 700;
+      color: var(--primary);
+      letter-spacing: 4px;
+      line-height: 1;
+    }
+
+    .logo-text span:last-child {
+      font-size: 11px;
+      display: block;
+      font-weight: 500;
+      letter-spacing: 5px;
+      color: var(--text-muted);
+      margin-top: 2px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 30px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--text-dark);
+      font-size: 13px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      position: relative;
+      padding-bottom: 4px;
+      transition: var(--transition-smooth);
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0%;
+      height: 1.5px;
+      background: var(--primary);
+      transition: var(--transition-smooth);
+    }
+
+    nav a:hover {
+      color: var(--primary);
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .cart-btn {
+      background: none;
+      border: none;
+      font-size: 22px;
+      cursor: pointer;
+      position: relative;
+      color: var(--text-dark);
+      transition: var(--transition-smooth);
+    }
+
+    .cart-btn:hover {
+      transform: scale(1.1);
+    }
+
+    .cart-badge {
+      position: absolute;
+      top: -6px;
+      right: -10px;
+      background: var(--primary);
+      color: white;
+      font-size: 10px;
+      font-weight: 700;
+      border-radius: 50%;
+      padding: 2px 7px;
+    }
+
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 26px;
+      cursor: pointer;
+      color: var(--text-dark);
+    }
+
+    /* CATEGORIES BAR */
+    .categories-bar {
+      background: #f7eee9;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      padding: 12px 20px;
+      border-top: 1px solid var(--border-light);
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .category-tab {
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-size: 13px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 500;
+      white-space: nowrap;
+      transition: var(--transition-smooth);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      cursor: pointer;
+      padding: 8px 18px;
+      border-radius: 20px;
+    }
+
+    .category-tab:hover,
+    .category-tab.active {
+      color: white;
+      background: var(--primary);
+      box-shadow: 0 4px 12px rgba(145, 79, 97, 0.25);
+    }
+
+    /* HERO SECTION */
+    .hero {
+      min-height: 85vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 80px 20px;
+      background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), 
+                  url('https://images.unsplash.com/photo-1526047932273-341f2a7631f9?auto=format&fit=crop&w=2000&q=80') center center / cover no-repeat;
+      color: white;
+    }
+
+    .hero-content {
+      max-width: 900px;
+      animation: fadeInHero 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(48px, 4.5vw, 76px);
+      margin-bottom: 20px;
+      font-weight: 400;
+      line-height: 1.15;
+    }
+
+    .hero p {
+      font-size: clamp(16px, 1.4vw, 22px);
+      margin-bottom: 35px;
+      font-weight: 300;
+      line-height: 1.6;
+      max-width: 750px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      padding: 16px 40px;
+      background: var(--primary);
+      color: white;
+      text-decoration: none;
+      border-radius: 4px;
+      text-transform: uppercase;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 2.5px;
+      transition: var(--transition-smooth);
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 8px 20px rgba(145, 79, 97, 0.3);
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-hover);
+      transform: translateY(-3px);
+    }
+
+    /* VALUE PROPOSITIONS */
+    .trust-bar {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      padding: 40px 8%;
+      background: white;
+      border-bottom: 1px solid var(--border-light);
+      text-align: center;
+    }
+
+    .trust-item h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(16px, 1.3vw, 20px);
+      color: var(--primary);
+      margin-bottom: 6px;
+      font-weight: 600;
+    }
+
+    .trust-item p {
+      font-size: clamp(12px, 0.9vw, 14px);
+      color: var(--text-muted);
+    }
+
+    /* OUR STORY SECTION */
+    .story-section {
+      padding: 100px 8%;
+      background: #ffffff;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .story-img-container {
+      width: 100%;
+      height: 450px;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    }
+
+    .story-img-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.8s ease;
+    }
+
+    .story-content h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(32px, 2.8vw, 44px);
+      color: var(--primary);
+      margin-bottom: 20px;
+      font-weight: 400;
+    }
+
+    .story-content p {
+      font-size: 15px;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+      line-height: 1.8;
+    }
+
+    /* BUILD YOUR OWN BOUQUET SECTION */
+    .builder-section {
+      padding: 100px 8%;
+      background: #f7eee9;
+    }
+
+    .builder-container {
+      background: white;
+      border-radius: 12px;
+      padding: 40px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+      border: 1px solid var(--border-light);
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr;
+      gap: 30px;
+      align-items: start;
+      will-change: transform;
+      transform: translateZ(0);
+    }
+
+    .builder-steps h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      color: var(--primary);
+      margin-bottom: 12px;
+      margin-top: 22px;
+    }
+
+    .builder-steps h3:first-child {
+      margin-top: 0;
+    }
+
+    .option-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .builder-option {
+      background: var(--bg-cream);
+      border: 2px solid var(--border-light);
+      padding: 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      text-align: left;
+      transition: var(--transition-smooth);
+    }
+
+    .builder-option:hover {
+      border-color: var(--accent);
+    }
+
+    .builder-option.selected {
+      border-color: var(--primary);
+      background: #fff5f7;
+    }
+
+    .builder-option span {
+      display: block;
+      font-weight: 600;
+      color: var(--text-dark);
+      font-size: 13px;
+      margin-bottom: 2px;
+    }
+
+    .builder-option small {
+      color: var(--text-muted);
+      font-size: 11px;
+    }
+
+    .builder-card-input {
+      width: 100%;
+      padding: 12px 15px;
+      border: 1px solid var(--border-light);
+      border-radius: 8px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 13px;
+      resize: vertical;
+      background: var(--bg-cream);
+      color: var(--text-dark);
+      outline: none;
+      transition: var(--transition-smooth);
+    }
+
+    .builder-card-input:focus {
+      border-color: var(--primary);
+      background: white;
+    }
+
+    /* LIVE PREVIEW BOX (Hidden by default, shown via .visible class) */
+    .builder-preview-box {
+      background: var(--bg-cream);
+      border-radius: 8px;
+      border: 1px solid var(--border-light);
+      padding: 20px;
+      text-align: center;
+      display: none;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .builder-preview-box.visible {
+      display: flex;
+    }
+
+    .builder-preview-box h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      color: var(--primary);
+      margin-bottom: 15px;
+    }
+
+    .preview-img-container {
+      width: 100%;
+      height: 260px;
+      background: white;
+      border-radius: 6px;
+      overflow: hidden;
+      border: 1px solid var(--border-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 15px;
+    }
+
+    .preview-img-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .preview-caption {
+      font-size: 12px;
+      color: var(--text-muted);
+      font-style: italic;
+      font-family: 'Playfair Display', serif;
+    }
+
+    /* SUMMARY COLUMN */
+    .builder-summary {
+      background: var(--bg-cream);
+      padding: 25px;
+      border-radius: 8px;
+      border: 1px solid var(--border-light);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+    }
+
+    .builder-summary h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      color: var(--primary);
+      margin-bottom: 15px;
+      border-bottom: 1px solid var(--border-light);
+      padding-bottom: 8px;
+    }
+
+    .summary-item {
+      display: flex;
+      flex-direction: column;
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+
+    .summary-item strong {
+      color: var(--text-dark);
+      font-size: 13px;
+    }
+
+    .builder-total {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      color: var(--primary);
+      font-weight: bold;
+      display: flex;
+      justify-content: space-between;
+      margin-top: 15px;
+      margin-bottom: 20px;
+      border-top: 1px solid var(--border-light);
+      padding-top: 12px;
+    }
+
+    /* PRODUCT COLLECTION */
+    .section-padding {
+      padding: 100px 8%;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .section-header h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(36px, 3vw, 52px);
+      color: var(--primary);
+      margin-bottom: 12px;
+      font-weight: 400;
+    }
+
+    .section-header p {
+      color: var(--text-muted);
+      font-size: clamp(14px, 1vw, 16px);
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 35px;
+    }
+
+    .product-card {
+      background: var(--card-bg);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+      transition: var(--transition-smooth);
+      border: 1px solid var(--border-light);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .product-card.hidden {
+      display: none;
+    }
+
+    .product-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+      border-color: rgba(145, 79, 97, 0.3);
+    }
+
+    .img-container {
+      width: 100%;
+      height: 380px;
+      position: relative;
+      overflow: hidden;
+      background-color: #fafaf9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .img-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      padding: 10px;
+      transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .product-card:hover .img-container img {
+      transform: scale(1.08);
+    }
+
+    .badge {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      background: var(--primary);
+      color: white;
+      font-size: 10px;
+      text-transform: uppercase;
+      padding: 6px 12px;
+      letter-spacing: 1.5px;
+      font-weight: 600;
+      border-radius: 2px;
+      z-index: 2;
+    }
+
+    .product-details {
+      padding: 25px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .product-details h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(20px, 1.5vw, 24px);
+      color: var(--text-dark);
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
+
+    .product-details p {
+      font-size: clamp(13px, 0.95vw, 15px);
+      color: var(--text-muted);
+      margin-bottom: 20px;
+    }
+
+    .product-price {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(18px, 1.4vw, 22px);
+      color: var(--primary);
+      font-weight: 700;
+      margin-bottom: 18px;
+      margin-top: auto;
+    }
+
+    /* REVIEWS SECTION */
+    .reviews-section {
+      background: #f7eee9;
+      text-align: center;
+    }
+
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      margin-top: 30px;
+    }
+
+    .review-card {
+      background: white;
+      padding: 35px 25px;
+      border-radius: 8px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+      transition: var(--transition-smooth);
+    }
+
+    .stars {
+      color: #e6b800;
+      margin-bottom: 12px;
+      font-size: 16px;
+    }
+
+    .review-card p {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(15px, 1.1vw, 18px);
+      font-style: italic;
+      color: var(--text-dark);
+      margin-bottom: 18px;
+    }
+
+    .review-card span {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--text-dark);
+      color: white;
+      padding: 70px 8% 30px;
+    }
+
+    .footer-col.highlight-contact {
+      animation: contactPulse 1.5s ease;
+      background: rgba(216, 160, 166, 0.15);
+      padding: 20px;
+      border-radius: 8px;
+      border: 1px solid var(--accent);
+    }
+
+    @keyframes contactPulse {
+      0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(216, 160, 166, 0.7); }
+      50% { transform: scale(1.03); box-shadow: 0 0 25px 8px rgba(216, 160, 166, 0.4); }
+      100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(216, 160, 166, 0); }
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 40px;
+      margin-bottom: 50px;
+    }
+
+    .footer-col h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(16px, 1.2vw, 20px);
+      margin-bottom: 20px;
+      letter-spacing: 1.5px;
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 12px; }
+
+    .footer-col a {
+      color: #ccc;
+      text-decoration: none;
+      font-size: 13px;
+      transition: var(--transition-smooth);
+    }
+
+    .footer-col a:hover { color: white; padding-left: 4px; }
+
+    .footer-bottom {
+      border-top: 1px solid #554444;
+      padding-top: 28px;
+      text-align: center;
+      font-size: 12px;
+      color: #aaa;
+    }
+
+    /* OVERLAY & DRAWERS */
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(4px);
+      display: none;
+      z-index: 1001;
+    }
+
+    .cart-drawer, .mobile-nav {
+      position: fixed;
+      top: 0;
+      background: white;
+      z-index: 1002;
+      transition: var(--transition-smooth);
+      display: flex;
+      flex-direction: column;
+      box-shadow: -10px 0 30px rgba(0,0,0,0.1);
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      overscroll-behavior-y: contain;
+    }
+
+    .cart-drawer {
+      right: -420px;
+      width: 400px;
+      height: 100%;
+      padding: 30px;
+    }
+
+    .cart-drawer.active { right: 0; }
+
+    .cart-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--border-light);
+      padding-bottom: 15px;
+    }
+
+    .cart-header h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+    }
+
+    .close-btn {
+      background: none;
+      border: none;
+      font-size: 24px;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+    }
+
+    .close-btn:hover { transform: rotate(90deg); }
+
+    .cart-items {
+      flex: 1;
+      padding: 20px 0;
+    }
+
+    .cart-item {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 15px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .cart-item-img {
+      width: 50px;
+      height: 50px;
+      object-fit: cover;
+      border-radius: 4px;
+      background: #f7eee9;
+    }
+
+    .cart-item-details { flex: 1; }
+
+    .cart-total {
+      display: flex;
+      justify-content: space-between;
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 20px;
+      font-family: 'Playfair Display', serif;
+    }
+
+    /* MOBILE NAV DRAWER */
+    .mobile-nav {
+      left: -100%;
+      width: 75%;
+      max-width: 300px;
+      height: 100%;
+      padding: 30px;
+      z-index: 1003;
+    }
+
+    .mobile-nav.active { left: 0; }
+
+    .mobile-nav ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      margin-top: 40px;
+    }
+
+    .mobile-nav a {
+      text-decoration: none;
+      color: var(--text-dark);
+      font-size: 16px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    @keyframes fadeInHero {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* RESPONSIVE DESIGN */
+    @media (max-width: 992px) {
+      .products-grid, .reviews-grid, .trust-bar, .footer-grid, .story-section {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
+      }
+      .story-section { grid-template-columns: 1fr; }
+      
+      .builder-container {
+        display: flex;
+        flex-direction: column-reverse;
+        padding: 20px;
+        gap: 20px;
+      }
+
+      .builder-preview-box.visible {
+        position: sticky;
+        top: 75px;
+        z-index: 10;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+      }
+    }
+
+    @media (max-width: 768px) {
+      nav ul { display: none; }
+      .menu-toggle { display: block; }
+      .story-section { padding: 60px 6%; }
+      .products-grid, .reviews-grid, .trust-bar, .footer-grid { grid-template-columns: 1fr; }
+      .option-grid { grid-template-columns: 1fr; }
+      .cart-drawer { width: 100%; right: -100%; }
+      .img-container { height: 320px; }
+      .logo-img { height: 45px; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="announcement-bar">
+    🌸 <i>Flower that stays</i>
+  </div>
+
+  <header>
+    <div class="nav-main">
+      <button class="menu-toggle" id="menuToggleBtn" aria-label="Open Mobile Menu">&#9776;</button>
+
+      <a href="#home" class="logo-container" onclick="resetToHome()">
+        <img src="logo2.jpg" alt="ALIRY. Flowershop" class="logo-img" onerror="this.style.display='none';">
+        <div class="logo-text">
+          <span class="logo">ALIRY.</span>
+          <span>FLOWERSHOP</span>
+        </div>
+      </a>
+
+      <nav>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#flowers">Occasions</a></li>
+          <li><a href="#about">Our Story</a></li>
+          <li><a href="#builder">Custom Builder</a></li>
+          <li><a href="#reviews">Reviews</a></li>
+          <li><a href="#contact" onclick="highlightContact()">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="cart-btn" id="cartToggleBtn" aria-label="Open Cart">
+          🛒 <span class="cart-badge" id="cartBadge">0</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="categories-bar">
+      <button class="category-tab active" onclick="filterCategory('all', this)">All</button>
+      <button class="category-tab" onclick="filterCategory('preserved', this)">Preserve Bouquet</button>
+      <button class="category-tab" onclick="filterCategory('customized', this)">Customized</button>
+      <button class="category-tab" onclick="filterCategory('bestseller', this)">Best Seller</button>
+    </div>
+  </header>
+
+  <div class="mobile-nav" id="mobileNav">
+    <div style="display:flex; justify-content:space-between; align-items:center;">
+      <h3 style="font-family:'Playfair Display',serif; color:var(--primary);">ALIRY.</h3>
+      <button class="close-btn" id="closeMobileNav">&times;</button>
+    </div>
+    <ul>
+      <li><a href="#home" onclick="toggleMobileNav(); resetToHome();">Home</a></li>
+      <li><a href="#flowers" onclick="toggleMobileNav()">Occasions</a></li>
+      <li><a href="#about" onclick="toggleMobileNav()">Our Story</a></li>
+      <li><a href="#builder" onclick="toggleMobileNav()">Custom Builder</a></li>
+      <li><a href="#reviews" onclick="toggleMobileNav()">Reviews</a></li>
+      <li><a href="#contact" onclick="toggleMobileNav(); highlightContact();">Contact</a></li>
+    </ul>
+  </div>
+
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <h1>Handcrafted Floral Arrangements</h1>
+      <p>Creating timeless dried, preserved, and bespoke bouquets, thoughtfully designed to turn special moments into lasting memories, with blooms made to last.</p>
+      <a href="#flowers" class="btn-primary">Order Flowers Now</a>
+    </div>
+  </section>
+
+  <div class="trust-bar">
+    <div class="trust-item">
+      <h4>Same Day Delivery</h4>
+      <p>Fast delivery across the area</p>
+    </div>
+    <div class="trust-item">
+      <h4>Lasting Beauty</h4>
+      <p>Preserved to last</p>
+    </div>
+    <div class="trust-item">
+      <h4>Handcrafted Daily</h4>
+      <p>Arranged by artisan florists</p>
+    </div>
+    <div class="trust-item">
+      <h4>Bespoke Cards</h4>
+      <p>Free personalized card included</p>
+    </div>
+  </div>
+
+  <section class="story-section" id="about">
+    <div class="story-img-container">
+      <img src="images/signature.jpg" onerror="this.src='https://images.unsplash.com/photo-1563241527-3004b7be0ffd?auto=format&fit=crop&w=800&q=80'" alt="Our Story Bouquet">
+    </div>
+    <div class="story-content">
+      <h2>Crafted with Dedication & Heart</h2>
+      <p>ALIRY. Flowershop was built out of a profound passion for artistry and a deep-seated work ethic. As a hardworking artisan dedicated to the craft, every single bouquet is meticulously styled to ensure that elegance meets perfection.</p>
+      <p>We believe that flowers are more than just gifts—they are heartfelt expressions. Through careful curation and a commitment to quality, our mission is to turn your special milestones into timeless memories with stunning floral designs made to last.</p>
+      <a href="#flowers" class="btn-primary" style="margin-top: 10px;">Explore Collections</a>
+    </div>
+  </section>
+
+  <section class="section-padding builder-section" id="builder">
+    <div class="section-header">
+      <h2>Build Your Own Bouquet</h2>
+      <p>Design a custom bespoke arrangement tailored precisely to your preferences.</p>
+    </div>
+
+    <div class="builder-container">
+      <div class="builder-steps">
+        <h3>1. Select Your Flower Base</h3>
+        <div class="option-grid">
+          <button class="builder-option" onclick="setBuilderOption('base', 'Preserved Eternal Roses', 999, 'images/preserve1.jpg', this)">
+            <span>Preserved Eternal Roses</span>
+            <small>₱999 • Lasts indefinitely</small>
+          </button>
+          <button class="builder-option" onclick="setBuilderOption('base', 'Velvet Classic Roses', 799, 'images/sbuldak.jpg', this)">
+            <span>Velvet Classic Roses</span>
+            <small>₱799 • Rich & dramatic</small>
+          </button>
+          <button class="builder-option" onclick="setBuilderOption('base', 'Golden Sunshine Mix', 899, 'images/bbuldak.jpg', this)">
+            <span>Golden Sunshine Mix</span>
+            <small>₱899 • Sunflowers & lilies</small>
+          </button>
+          <button class="builder-option" onclick="setBuilderOption('base', 'Mixed Seasonal Blossoms', 699, 'images/signature.jpg', this)">
+            <span>Mixed Seasonal Blossoms</span>
+            <small>₱699 • Freshly picked look</small>
+          </button>
+        </div>
+
+        <h3>2. Choose Wrapping & Aesthetic</h3>
+        <div class="option-grid">
+          <button class="builder-option" onclick="setBuilderOption('wrap', 'Blush Pink & Gold', 0, 'images/preserve1.jpg', this)">
+            <span>Blush Pink & Gold</span>
+            <small>₱0 • Signature soft romance</small>
+          </button>
+          <button class="builder-option" onclick="setBuilderOption('wrap', 'Midnight Noir & Silver', 50, 'images/sbuldak.jpg', this)">
+            <span>Midnight Noir & Silver</span>
+            <small>₱50 • Modern luxury aesthetic</small>
+          </button>
+          <button class="builder-option" onclick="setBuilderOption('wrap', 'Pure Cream & Linen', 0, 'images/signature.jpg', this)">
+            <span>Pure Cream & Linen</span>
+            <small>₱0 • Minimalist chic</small>
+          </button>
+          <button class="builder-option" onclick="setBuilderOption('wrap', 'Lavender Dream', 50, 'images/bbuldak.jpg', this)">
+            <span>Lavender Dream</span>
+            <small>₱50 • Soft pastel elegance</small>
+          </button>
+        </div>
+
+        <h3>3. Add Special Enhancements</h3>
+        <div class="option-grid">
+          <button class="builder-option" onclick="setBuilderOption('addon', 'None / Standard Arrangement', 0, '', this)">
+            <span>None</span>
+            <small>₱0 • Standard look</small>
+          </button>
+          <button class="builder-option" onclick="setBuilderOption('addon', 'Ferrero Rocher Chocolates', 300, 'images/ferrero.jpg', this)">
+            <span>Ferrero Rocher Chocolates</span>
+            <small>₱300 • Sweet indulgence</small>
+          </button>
+          <button class="builder-option" onclick="setBuilderOption('addon', 'Heart-Shaped Fairy Lights', 150, '', this)">
+            <span>Fairy Lights</span>
+            <small>₱150 • Magical glow</small>
+          </button>
+          <button class="builder-option" onclick="setBuilderOption('addon', 'Baby\'s Breath Accents', 200, '', this)">
+            <span>Extra Baby's Breath</span>
+            <small>₱200 • Full delicate texture</small>
+          </button>
+        </div>
+
+        <h3>4. Complimentary Custom Card Note</h3>
+        <textarea id="cardNote" class="builder-card-input" rows="2" placeholder="Type your personal message for the free complimentary card here..."></textarea>
+      </div>
+
+      <div class="builder-preview-box" id="builderPreviewBox">
+        <h4>Live Visual Preview</h4>
+        <div class="preview-img-container">
+          <img id="previewImage" src="" onerror="this.src='https://images.unsplash.com/photo-1563241527-3004b7be0ffd?auto=format&fit=crop&w=600&q=80'" alt="Custom Bouquet Preview">
+        </div>
+        <p class="preview-caption" id="previewCaption">Select an option above to preview</p>
+      </div>
+
+      <div class="builder-summary">
+        <div>
+          <h4>Custom Recipe</h4>
+          <div class="summary-item">
+            <span>Base:</span>
+            <strong id="summaryBase">Not selected yet</strong>
+          </div>
+          <div class="summary-item" style="margin-top: 6px;">
+            <span>Wrapping:</span>
+            <strong id="summaryWrap">Not selected yet</strong>
+          </div>
+          <div class="summary-item" style="margin-top: 6px;">
+            <span>Enhancement:</span>
+            <strong id="summaryAddon">Not selected yet</strong>
+          </div>
+        </div>
+
+        <div>
+          <div class="builder-total">
+            <span>Total:</span>
+            <span id="summaryTotal">₱0</span>
+          </div>
+          <button class="btn-primary" style="width:100%; text-align:center; padding: 12px 15px; font-size:11px;" onclick="orderCustomBouquet()">Send to Messenger</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-padding" id="flowers">
+    <div class="section-header">
+      <h2>Bestselling Arrangements</h2>
+      <p>Thoughtfully curated blooms for life’s most meaningful moments.</p>
+    </div>
+
+    <div class="products-grid">
+      <div class="product-card" data-category="preserved">
+        <div class="img-container">
+          <span class="badge">Preserved</span>
+          <img src="images/preserve1.jpg" alt="Preserved Eternal Bouquet" id="img-preserve">
+        </div>
+        <div class="product-details">
+          <h3>Preserved Eternal Bouquet</h3>
+          <p>Handcrafted real preserved floral arrangement designed to last indefinitely.</p>
+          <div class="product-price">₱1,199</div>
+          <button class="btn-primary" onclick="addToCart('Preserved Eternal Bouquet', 1199, document.getElementById('img-preserve').src)">Add to Basket</button>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="bestseller customized">
+        <div class="img-container">
+          <span class="badge">Bestseller</span>
+          <img src="images/sbuldak.jpg" alt="Velvet Roses Elegance" id="img-velvet">
+        </div>
+        <div class="product-details">
+          <h3>Velvet Roses Elegance</h3>
+          <p>Premium long-stemmed red roses styled in our signature wrapping.</p>
+          <div class="product-price">₱599</div>
+          <button class="btn-primary" onclick="addToCart('Velvet Roses Elegance', 599, document.getElementById('img-velvet').src)">Add to Basket</button>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="customized">
+        <div class="img-container">
+          <span class="badge">Seasonal</span>
+          <img src="images/bbuldak.jpg" alt="Golden Sunshine Delight" id="img-sunshine">
+        </div>
+        <div class="product-details">
+          <h3>Golden Sunshine Delight</h3>
+          <p>Bright sunflowers, white lilies, and lush greenery bouquet.</p>
+          <div class="product-price">₱999</div>
+          <button class="btn-primary" onclick="addToCart('Golden Sunshine Delight', 999, document.getElementById('img-sunshine').src)">Add to Basket</button>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="bestseller customized preserved">
+        <div class="img-container">
+          <span class="badge">Luxury</span>
+          <img src="images/signature.jpg" onerror="this.src='https://images.unsplash.com/photo-1563241527-3004b7be0ffd?auto=format&fit=crop&w=600&q=80'" alt="Aliry Signature Hatbox" id="img-hatbox">
+        </div>
+        <div class="product-details">
+          <h3>Aliry Signature Hatbox</h3>
+          <p>Our bespoke luxury floral layout arranged in a velvet gift box.</p>
+          <div class="product-price">₱2,299</div>
+          <button class="btn-primary" onclick="addToCart('Aliry Signature Hatbox', 2299, document.getElementById('img-hatbox').src)">Add to Basket</button>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="customized">
+        <div class="img-container">
+          <span class="badge">Customized</span>
+          <img src="images/ferrero.jpg" onerror="this.src='ferrero.jpg'" alt="Ferrero Golden Romance Bouquet" id="img-ferrero">
+        </div>
+        <div class="product-details">
+          <h3>Ferrero Golden Romance</h3>
+          <p>A sweet indulgence featuring rich Ferrero Rocher chocolates beautifully arranged with delicate floral accents.</p>
+          <div class="product-price">₱1,599</div>
+          <button class="btn-primary" onclick="addToCart('Ferrero Golden Romance', 1599, document.getElementById('img-ferrero').src)">Add to Basket</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-padding reviews-section" id="reviews">
+    <div class="section-header">
+      <h2>What Our Clients Say</h2>
+      <p>Rated 4.9/5 stars by flower lovers nationwide.</p>
+    </div>
+
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p>"The arrangement was even more gorgeous in real life than on the website. Delivery was punctual!"</p>
+        <span>— Crystal L.</span>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p>"Ordered same-day delivery for my wife's birthday. ALIRY. exceeded expectations completely!"</p>
+        <span>— Clarence S.</span>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p>"Excellent quality and exceptional styling."</p>
+        <span>— Audrey R.</span>
+      </div>
+    </div>
+  </section>
+
+  <footer id="contact">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>ALIRY. FLOWERSHOP</h4>
+        <p style="font-size:13px; color:#ccc; line-height:1.6;">
+          We create long-lasting, highly personalized floral gifts for people who want something more meaningful than ordinary fresh flowers.
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h4>SHOP OCCASIONS</h4>
+        <ul>
+          <li><a href="#flowers" onclick="filterCategory('customized');">Customized</a></li>
+          <li><a href="#flowers" onclick="filterCategory('preserved');">Preserve Bouquet</a></li>
+          <li><a href="#flowers" onclick="filterCategory('bestseller');">Best Seller</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>CUSTOMER CARE</h4>
+        <ul>
+          <li><a href="#">Delivery Information</a></li>
+          <li><a href="#">Flower Care Guide</a></li>
+          <li><a href="#">Terms of Service</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col" id="contactInfoCol">
+        <h4>CONTACT US</h4>
+        <p style="font-size:13px; color:#ccc; line-height:1.8;">
+          📍 Dasmariñas Cavite, Philippines<br>
+          📞 Phone: 0939-228-5049<br>
+          📧 Email: aliryflowershop@gmail.com
+        </p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 ALIRY. Flowershop. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <div class="overlay" id="overlay"></div>
+
+  <aside class="cart-drawer" id="cartDrawer">
+    <div class="cart-header">
+      <h3 style="color:var(--primary); font-weight:normal;">Your Shopping Basket</h3>
+      <button class="close-btn" id="closeCartBtn">&times;</button>
+    </div>
+    <div class="cart-items" id="cartItems"></div>
+    <div style="border-top: 1px solid var(--border-light); padding-top: 20px;">
+      <div class="cart-total">
+        <span>Total:</span>
+        <span id="cartTotal">₱0</span>
+      </div>
+      <button class="btn-primary" style="width:100%; text-align:center;" onclick="proceedToMessengerCheckout()">Complete Purchase</button>
+    </div>
+  </aside>
+
+  <script>
+    let cart = [];
+
+    // Track state (null when unselected)
+    let currentCustom = {
+      baseName: null,
+      basePrice: 0,
+      wrapName: null,
+      wrapPrice: 0,
+      addonName: null,
+      addonPrice: 0,
+      image: ''
+    };
+
+    const overlay = document.getElementById('overlay');
+    const cartDrawer = document.getElementById('cartDrawer');
+    const cartToggleBtn = document.getElementById('cartToggleBtn');
+    const closeCartBtn = document.getElementById('closeCartBtn');
+    const menuToggleBtn = document.getElementById('menuToggleBtn');
+    const mobileNav = document.getElementById('mobileNav');
+    const closeMobileNav = document.getElementById('closeMobileNav');
+
+    cartToggleBtn.addEventListener('click', toggleCart);
+    closeCartBtn.addEventListener('click', toggleCart);
+    overlay.addEventListener('click', () => {
+      if (cartDrawer.classList.contains('active')) toggleCart();
+      if (mobileNav.classList.contains('active')) toggleMobileNav();
+    });
+
+    menuToggleBtn.addEventListener('click', toggleMobileNav);
+    closeMobileNav.addEventListener('click', toggleMobileNav);
+
+    function toggleCart() {
+      cartDrawer.classList.toggle('active');
+      overlay.style.display = cartDrawer.classList.contains('active') || mobileNav.classList.contains('active') ? 'block' : 'none';
+    }
+
+    function toggleMobileNav() {
+      mobileNav.classList.toggle('active');
+      overlay.style.display = mobileNav.classList.contains('active') || cartDrawer.classList.contains('active') ? 'block' : 'none';
+    }
+
+    function resetToHome() {
+      filterCategory('all', document.querySelector('.category-tab'));
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function highlightContact() {
+      const contactCol = document.getElementById('contactInfoCol');
+      contactCol.classList.add('highlight-contact');
+      setTimeout(() => { contactCol.classList.remove('highlight-contact'); }, 1500);
+    }
+
+    function setBuilderOption(type, name, price, imgPath, buttonEl) {
+      const isAlreadySelected = buttonEl.classList.contains('selected');
+      const parent = buttonEl.parentElement;
+
+      // Clear all selected states in this group
+      parent.querySelectorAll('.builder-option').forEach(btn => btn.classList.remove('selected'));
+
+      if (type === 'base') {
+        if (isAlreadySelected) {
+          currentCustom.baseName = null;
+          currentCustom.basePrice = 0;
+          document.getElementById('summaryBase').textContent = 'Not selected yet';
+        } else {
+          buttonEl.classList.add('selected');
+          currentCustom.baseName = name;
+          currentCustom.basePrice = price;
+          if (imgPath) currentCustom.image = imgPath;
+          document.getElementById('summaryBase').textContent = name;
+        }
+      } else if (type === 'wrap') {
+        if (isAlreadySelected) {
+          currentCustom.wrapName = null;
+          currentCustom.wrapPrice = 0;
+          document.getElementById('summaryWrap').textContent = 'Not selected yet';
+        } else {
+          buttonEl.classList.add('selected');
+          currentCustom.wrapName = name;
+          currentCustom.wrapPrice = price;
+          if (imgPath) currentCustom.image = imgPath;
+          document.getElementById('summaryWrap').textContent = name;
+        }
+      } else if (type === 'addon') {
+        if (isAlreadySelected) {
+          currentCustom.addonName = null;
+          currentCustom.addonPrice = 0;
+          document.getElementById('summaryAddon').textContent = 'Not selected yet';
+        } else {
+          buttonEl.classList.add('selected');
+          currentCustom.addonName = name;
+          currentCustom.addonPrice = price;
+          if (imgPath) currentCustom.image = imgPath;
+          document.getElementById('summaryAddon').textContent = name;
+        }
+      }
+
+      // Check if ANY option is still selected
+      const hasAnySelection = currentCustom.baseName !== null || currentCustom.wrapName !== null || currentCustom.addonName !== null;
+      const previewBox = document.getElementById('builderPreviewBox');
+
+      if (hasAnySelection) {
+        previewBox.classList.add('visible');
+        if (currentCustom.image) {
+          document.getElementById('previewImage').src = currentCustom.image;
+        }
+        document.getElementById('previewCaption').textContent = `${currentCustom.baseName || 'Custom'} + ${currentCustom.wrapName || 'Arrangement'}`;
+      } else {
+        // If everything is unselected, hide the preview container
+        previewBox.classList.remove('visible');
+      }
+
+      updateBuilderTotal();
+    }
+
+    function updateBuilderTotal() {
+      const total = currentCustom.basePrice + currentCustom.wrapPrice + currentCustom.addonPrice;
+      document.getElementById('summaryTotal').textContent = `₱${total.toLocaleString()}`;
+    }
+
+    function orderCustomBouquet() {
+      if (!currentCustom.baseName && !currentCustom.wrapName && !currentCustom.addonName) {
+        alert("Please select at least one custom builder option first!");
+        return;
+      }
+
+      const total = currentCustom.basePrice + currentCustom.wrapPrice + currentCustom.addonPrice;
+      const cardNote = document.getElementById('cardNote').value.trim();
+      const messengerProfileUrl = "https://www.facebook.com/share/19NeHNZKQN/"; 
+
+      let orderMessage = "Hello ALIRY Flowershop! I would like to order a custom built bouquet:\n\n";
+      if (currentCustom.baseName) orderMessage += `• Flower Base: ${currentCustom.baseName}\n`;
+      if (currentCustom.wrapName) orderMessage += `• Wrapping & Aesthetic: ${currentCustom.wrapName}\n`;
+      if (currentCustom.addonName) orderMessage += `• Special Enhancement: ${currentCustom.addonName}\n`;
+      if (cardNote) { orderMessage += `• Card Message: "${cardNote}"\n`; }
+      orderMessage += `\nCustom Total Amount: ₱${total.toLocaleString()}`;
+      orderMessage += "\n\nPlease let me know how to proceed with payment and delivery. Thank you!";
+
+      navigator.clipboard.writeText(orderMessage).then(() => {
+        alert("Your custom bouquet recipe has been copied to your clipboard! Opening Messenger now so you can paste and send your request.");
+        window.open(messengerProfileUrl, '_blank');
+      }).catch(() => {
+        window.open(messengerProfileUrl, '_blank');
+      });
+    }
+
+    function addToCart(name, price, image) {
+      const existing = cart.find(item => item.name === name);
+      if (existing) {
+        existing.quantity += 1;
+      } else {
+        cart.push({ name, price, image, quantity: 1 });
+      }
+      updateCartUI();
+      cartDrawer.classList.add('active');
+      overlay.style.display = 'block';
+    }
+
+    function updateCartUI() {
+      const cartItemsContainer = document.getElementById('cartItems');
+      const cartBadge = document.getElementById('cartBadge');
+      const cartTotal = document.getElementById('cartTotal');
+
+      cartItemsContainer.innerHTML = '';
+      let totalCount = 0;
+      let totalPrice = 0;
+
+      if (cart.length === 0) {
+        cartItemsContainer.innerHTML = '<p style="text-align:center; color:#888; margin-top:20px;">Your basket is currently empty.</p>';
+      } else {
+        cart.forEach(item => {
+          totalCount += item.quantity;
+          totalPrice += item.price * item.quantity;
+
+          const el = document.createElement('div');
+          el.className = 'cart-item';
+          el.innerHTML = `
+            <img src="${item.image}" alt="${item.name}" class="cart-item-img">
+            <div class="cart-item-details">
+              <h4 style="font-weight:normal; font-size:14px; font-family:'Playfair Display', serif;">${item.name}</h4>
+              <p style="font-size:12px; color:var(--primary); margin-top:2px;">₱${item.price.toLocaleString()} x ${item.quantity}</p>
+            </div>
+            <strong style="font-size:14px; font-family:'Playfair Display', serif;">₱${(item.price * item.quantity).toLocaleString()}</strong>
+          `;
+          cartItemsContainer.appendChild(el);
+        });
+      }
+
+      cartBadge.textContent = totalCount;
+      cartTotal.textContent = `₱${totalPrice.toLocaleString()}`;
+    }
+
+    function filterCategory(category, buttonElement) {
+      const cards = document.querySelectorAll('.product-card');
+      const tabs = document.querySelectorAll('.category-tab');
+
+      if (buttonElement) {
+        tabs.forEach(tab => tab.classList.remove('active'));
+        buttonElement.classList.add('active');
+      }
+
+      cards.forEach(card => {
+        const cardCategories = card.getAttribute('data-category').split(' ');
+        if (category === 'all' || cardCategories.includes(category)) {
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+    }
+
+    function proceedToMessengerCheckout() {
+      if (cart.length === 0) {
+        alert("Your shopping basket is empty!");
+        return;
+      }
+
+      const messengerProfileUrl = "https://www.facebook.com/share/19NeHNZKQN/"; 
+      let orderMessage = "Hello ALIRY Flowershop! I would like to place an order:\n\n";
+      let totalPrice = 0;
+
+      cart.forEach((item, index) => {
+        const itemTotal = item.price * item.quantity;
+        totalPrice += itemTotal;
+        orderMessage += `${index + 1}. ${item.name} (x${item.quantity}) - ₱${itemTotal.toLocaleString()}\n`;
+      });
+
+      orderMessage += `\nTotal Amount: ₱${totalPrice.toLocaleString()}`;
+      orderMessage += "\n\nPlease let me know how to proceed with payment and delivery. Thank you!";
+
+      navigator.clipboard.writeText(orderMessage).then(() => {
+        alert("Your order details have been copied to your clipboard! Opening Messenger now so you can paste and send your order.");
+        window.open(messengerProfileUrl, '_blank');
+      }).catch(() => {
+        window.open(messengerProfileUrl, '_blank');
+      });
+    }
+  </script>
+
+</body>
+</html>
