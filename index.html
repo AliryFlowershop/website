@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ALIRY. Flowershop | Luxury Flowers & Floral Gifts</title>
+  <title>ALIRY. Flower Studio | Luxury Flowers & Floral Gifts</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -77,9 +77,20 @@
     .logo-container {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
       text-decoration: none;
       color: inherit;
+      position: relative;
+      padding: 5px 10px;
+      border-radius: 8px;
+      transition: var(--transition-smooth);
+    }
+
+    /* INTERACTIVE BLOOM CONTAINER FOR LOGO HOVER */
+    .logo-bloom-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
     }
 
     .logo-img {
@@ -88,10 +99,71 @@
       object-fit: contain;
       mix-blend-mode: multiply;
       transition: var(--transition-smooth);
+      position: relative;
+      z-index: 2;
     }
 
     .logo-container:hover .logo-img {
       transform: scale(1.05);
+    }
+
+    /* SVG FLOWER BLOOM OVERLAY ANIMATION ON HOVER */
+    .bloom-svg-overlay {
+      position: absolute;
+      top: -25px;
+      left: -30px;
+      width: 120px;
+      height: 120px;
+      pointer-events: none;
+      z-index: 1;
+      opacity: 0;
+      transform: scale(0.5);
+      transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .logo-container:hover .bloom-svg-overlay {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    /* Stem & Branch Growing Path Animation */
+    .bloom-stem {
+      stroke: #914f61;
+      stroke-width: 2.5;
+      stroke-linecap: round;
+      fill: none;
+      stroke-dasharray: 150;
+      stroke-dashoffset: 150;
+      transition: stroke-dashoffset 0.8s ease-in-out;
+    }
+
+    .logo-container:hover .bloom-stem {
+      stroke-dashoffset: 0;
+    }
+
+    /* Flower Petals Blooming Animation */
+    .bloom-petal {
+      fill: #d8a0a6;
+      stroke: #914f61;
+      stroke-width: 1.5;
+      transform: scale(0);
+      transform-origin: center;
+      transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.3s;
+    }
+
+    .logo-container:hover .bloom-petal {
+      transform: scale(1);
+    }
+
+    .bloom-center {
+      fill: #914f61;
+      transform: scale(0);
+      transform-origin: center;
+      transition: transform 0.4s ease 0.6s;
+    }
+
+    .logo-container:hover .bloom-center {
+      transform: scale(1);
     }
 
     .logo-text {
@@ -358,6 +430,7 @@
     .builder-section {
       padding: 100px 8%;
       background: #f7eee9;
+      scroll-margin-top: 130px;
     }
 
     .builder-container {
@@ -444,7 +517,7 @@
       background: white;
     }
 
-    /* LIVE PREVIEW BOX (Hidden by default, shown via .visible class) */
+    /* LIVE PREVIEW BOX */
     .builder-preview-box {
       background: var(--bg-cream);
       border-radius: 8px;
@@ -543,6 +616,7 @@
     /* PRODUCT COLLECTION */
     .section-padding {
       padding: 100px 8%;
+      scroll-margin-top: 130px;
     }
 
     .section-header {
@@ -663,6 +737,7 @@
     .reviews-section {
       background: #f7eee9;
       text-align: center;
+      scroll-margin-top: 130px;
     }
 
     .reviews-grid {
@@ -702,11 +777,154 @@
       letter-spacing: 1.5px;
     }
 
+    /* MODAL STYLES FOR CUSTOMER CARE PAGES */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(5px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 2000;
+      padding: 20px;
+    }
+
+    .modal-overlay.active {
+      display: flex;
+    }
+
+    .modal-content {
+      background: white;
+      width: 100%;
+      max-width: 600px;
+      max-height: 85vh;
+      border-radius: 12px;
+      padding: 40px;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+      overflow-y: auto;
+      position: relative;
+      animation: modalFadeIn 0.3s ease;
+    }
+
+    @keyframes modalFadeIn {
+      from { opacity: 0; transform: translateY(15px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 20px;
+      right: 25px;
+      background: none;
+      border: none;
+      font-size: 26px;
+      cursor: pointer;
+      color: var(--text-muted);
+      transition: var(--transition-smooth);
+    }
+
+    .modal-close:hover {
+      color: var(--primary);
+    }
+
+    .modal-content h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      color: var(--primary);
+      margin-bottom: 20px;
+    }
+
+    .modal-content p, .modal-content li {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 14px;
+      line-height: 1.7;
+    }
+
+    .modal-content ul {
+      padding-left: 20px;
+      margin-bottom: 15px;
+    }
+
+    /* ORIGINAL BRAND SOCIAL ICONS STYLING */
+    .social-icons-container {
+      display: flex;
+      gap: 12px;
+      margin-top: 15px;
+      transition: var(--transition-smooth);
+      border-radius: 30px;
+      padding: 4px;
+    }
+
+    .social-icon-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 42px;
+      height: 42px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 50%;
+      transition: var(--transition-smooth);
+      text-decoration: none;
+    }
+
+    .social-icon-link svg {
+      width: 20px;
+      height: 20px;
+      transition: var(--transition-smooth);
+    }
+
+    /* Original Brand Colors & Hover Effects */
+    .social-icon-link.facebook svg {
+      fill: #1877F2;
+    }
+    .social-icon-link.facebook:hover {
+      background: #1877F2;
+      border-color: #1877F2;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 15px rgba(24, 119, 242, 0.4);
+    }
+    .social-icon-link.facebook:hover svg {
+      fill: #ffffff;
+    }
+
+    .social-icon-link.tiktok svg {
+      fill: #25F4EE;
+    }
+    .social-icon-link.tiktok:hover {
+      background: #000000;
+      border-color: #25F4EE;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 15px rgba(37, 244, 238, 0.3);
+    }
+    .social-icon-link.tiktok:hover svg {
+      fill: #ffffff;
+    }
+
+    .social-icon-link.instagram svg {
+      fill: #E4405F;
+    }
+    .social-icon-link.instagram:hover {
+      background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+      border-color: #d6249f;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 15px rgba(214, 36, 159, 0.4);
+    }
+    .social-icon-link.instagram:hover svg {
+      fill: #ffffff;
+    }
+
     /* FOOTER */
     footer {
       background: var(--text-dark);
       color: white;
       padding: 70px 8% 30px;
+      scroll-margin-top: 130px;
     }
 
     .footer-col.highlight-contact {
@@ -717,9 +935,22 @@
       border: 1px solid var(--accent);
     }
 
+    /* HIGHLIGHT EFFECT FOR SOCIAL ICONS CONTAINER */
+    .social-icons-container.highlight-socials {
+      animation: socialGlowPulse 1.5s ease;
+      background: rgba(216, 160, 166, 0.25);
+      box-shadow: 0 0 25px 8px rgba(216, 160, 166, 0.5);
+    }
+
     @keyframes contactPulse {
       0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(216, 160, 166, 0.7); }
       50% { transform: scale(1.03); box-shadow: 0 0 25px 8px rgba(216, 160, 166, 0.4); }
+      100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(216, 160, 166, 0); }
+    }
+
+    @keyframes socialGlowPulse {
+      0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(216, 160, 166, 0.8); }
+      50% { transform: scale(1.05); box-shadow: 0 0 30px 12px rgba(216, 160, 166, 0.6); }
       100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(216, 160, 166, 0); }
     }
 
@@ -895,16 +1126,35 @@
       
       .builder-container {
         display: flex;
-        flex-direction: column-reverse;
+        flex-direction: column;
         padding: 20px;
         gap: 20px;
       }
 
+      .builder-summary-preview-wrapper {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+        width: 100%;
+      }
+
+      .builder-summary, 
+      .builder-preview-box {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+      }
+
       .builder-preview-box.visible {
-        position: sticky;
-        top: 75px;
-        z-index: 10;
-        box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+        display: flex;
+        position: static;
+        box-shadow: none;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .builder-summary-preview-wrapper {
+        grid-template-columns: 1fr;
       }
     }
 
@@ -932,10 +1182,31 @@
       <button class="menu-toggle" id="menuToggleBtn" aria-label="Open Mobile Menu">&#9776;</button>
 
       <a href="#home" class="logo-container" onclick="resetToHome()">
-        <img src="logo2.jpg" alt="ALIRY. Flowershop" class="logo-img" onerror="this.style.display='none';">
+        <div class="logo-bloom-wrapper">
+          <svg class="bloom-svg-overlay" viewBox="0 0 100 100">
+            <path class="bloom-stem" d="M20,90 Q30,60 50,45 T80,25" />
+            
+            <g transform="translate(80, 25)">
+              <ellipse class="bloom-petal" cx="0" cy="-12" rx="6" ry="10" />
+              <ellipse class="bloom-petal" cx="12" cy="-4" rx="10" ry="6" transform="rotate(30 12 -4)" />
+              <ellipse class="bloom-petal" cx="10" cy="10" rx="6" ry="10" transform="rotate(60 10 10)" />
+              <ellipse class="bloom-petal" cx="-2" cy="12" rx="10" ry="6" transform="rotate(90 -2 12)" />
+              <ellipse class="bloom-petal" cx="-12" cy="4" rx="6" ry="10" transform="rotate(120 -12 4)" />
+              <ellipse class="bloom-petal" cx="-10" cy="-10" rx="10" ry="6" transform="rotate(150 -10 -10)" />
+              <circle class="bloom-center" cx="0" cy="0" r="4.5" />
+            </g>
+
+            <g transform="translate(45, 50)">
+              <path class="bloom-stem" d="M0,0 Q-10,-10 -15,-5" style="stroke-dasharray: 20; stroke-dashoffset: 0;" />
+              <circle class="bloom-center" cx="-17" cy="-6" r="3" />
+            </g>
+          </svg>
+
+          <img src="logo2.jpg" alt="ALIRY. Flower Studio" class="logo-img" onerror="this.style.display='none';">
+        </div>
         <div class="logo-text">
           <span class="logo">ALIRY.</span>
-          <span>FLOWERSHOP</span>
+          <span>FLOWER STUDIO</span>
         </div>
       </a>
 
@@ -1013,9 +1284,83 @@
     </div>
     <div class="story-content">
       <h2>Crafted with Dedication & Heart</h2>
-      <p>ALIRY. Flowershop was built out of a profound passion for artistry and a deep-seated work ethic. As a hardworking artisan dedicated to the craft, every single bouquet is meticulously styled to ensure that elegance meets perfection.</p>
+      <p>ALIRY. Flower Studio was built out of a profound passion for artistry and a deep-seated work ethic. As a hardworking artisan dedicated to the craft, every single bouquet is meticulously styled to ensure that elegance meets perfection.</p>
       <p>We believe that flowers are more than just gifts—they are heartfelt expressions. Through careful curation and a commitment to quality, our mission is to turn your special milestones into timeless memories with stunning floral designs made to last.</p>
       <a href="#flowers" class="btn-primary" style="margin-top: 10px;">Explore Collections</a>
+    </div>
+  </section>
+
+  <section class="section-padding" id="flowers">
+    <div class="section-header">
+      <h2>Bestselling Arrangements</h2>
+      <p>Thoughtfully curated blooms for life’s most meaningful moments.</p>
+    </div>
+
+    <div class="products-grid">
+      <div class="product-card" data-category="bestseller customized">
+        <div class="img-container">
+          <span class="badge">🔥 HOT! Bestseller</span>
+          <img src="images/sbuldak.jpg" alt="Velvet Roses Elegance" id="img-velvet">
+        </div>
+        <div class="product-details">
+          <h3>Velvet Roses Elegance</h3>
+          <p>Premium long-stemmed red roses styled in our signature wrapping.</p>
+          <div class="product-price">₱599</div>
+          <button class="btn-primary" onclick="addToCart('Velvet Roses Elegance', 599, document.getElementById('img-velvet').src)">Add to Basket</button>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="bestseller customized preserved">
+        <div class="img-container">
+          <span class="badge">🔥 HOT! Luxury</span>
+          <img src="images/signature.jpg" onerror="this.src='https://images.unsplash.com/photo-1563241527-3004b7be0ffd?auto=format&fit=crop&w=600&q=80'" alt="Aliry Signature Hatbox" id="img-hatbox">
+        </div>
+        <div class="product-details">
+          <h3>Aliry Signature Hatbox</h3>
+          <p>Our bespoke luxury floral layout arranged in a velvet gift box.</p>
+          <div class="product-price">₱2,299</div>
+          <button class="btn-primary" onclick="addToCart('Aliry Signature Hatbox', 2299, document.getElementById('img-hatbox').src)">Add to Basket</button>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="preserved">
+        <div class="img-container">
+          <span class="badge">Preserved</span>
+          <img src="images/preserve1.jpg" alt="Preserved Eternal Bouquet" id="img-preserve">
+        </div>
+        <div class="product-details">
+          <h3>Preserved Eternal Bouquet</h3>
+          <p>Handcrafted real preserved floral arrangement designed to last indefinitely.</p>
+          <div class="product-price">₱1,199</div>
+          <button class="btn-primary" onclick="addToCart('Preserved Eternal Bouquet', 1199, document.getElementById('img-preserve').src)">Add to Basket</button>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="customized">
+        <div class="img-container">
+          <span class="badge">Seasonal</span>
+          <img src="images/bbuldak.jpg" alt="Golden Sunshine Delight" id="img-sunshine">
+        </div>
+        <div class="product-details">
+          <h3>Golden Sunshine Delight</h3>
+          <p>Bright sunflowers, white lilies, and lush greenery bouquet.</p>
+          <div class="product-price">₱999</div>
+          <button class="btn-primary" onclick="addToCart('Golden Sunshine Delight', 999, document.getElementById('img-sunshine').src)">Add to Basket</button>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="customized">
+        <div class="img-container">
+          <span class="badge">Customized</span>
+          <img src="images/ferrero.jpg" onerror="this.src='ferrero.jpg'" alt="Ferrero Golden Romance Bouquet" id="img-ferrero">
+        </div>
+        <div class="product-details">
+          <h3>Ferrero Golden Romance</h3>
+          <p>A sweet indulgence featuring rich Ferrero Rocher chocolates beautifully arranged with delicate floral accents.</p>
+          <div class="product-price">₱1,599</div>
+          <button class="btn-primary" onclick="addToCart('Ferrero Golden Romance', 1599, document.getElementById('img-ferrero').src)">Add to Basket</button>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -1091,111 +1436,39 @@
         <textarea id="cardNote" class="builder-card-input" rows="2" placeholder="Type your personal message for the free complimentary card here..."></textarea>
       </div>
 
-      <div class="builder-preview-box" id="builderPreviewBox">
-        <h4>Live Visual Preview</h4>
-        <div class="preview-img-container">
-          <img id="previewImage" src="" onerror="this.src='https://images.unsplash.com/photo-1563241527-3004b7be0ffd?auto=format&fit=crop&w=600&q=80'" alt="Custom Bouquet Preview">
-        </div>
-        <p class="preview-caption" id="previewCaption">Select an option above to preview</p>
-      </div>
-
-      <div class="builder-summary">
-        <div>
-          <h4>Custom Recipe</h4>
-          <div class="summary-item">
-            <span>Base:</span>
-            <strong id="summaryBase">Not selected yet</strong>
+      <div class="builder-summary-preview-wrapper">
+        <div class="builder-preview-box" id="builderPreviewBox">
+          <h4>Live Visual Preview</h4>
+          <div class="preview-img-container">
+            <img id="previewImage" src="" onerror="this.src='https://images.unsplash.com/photo-1563241527-3004b7be0ffd?auto=format&fit=crop&w=600&q=80'" alt="Custom Bouquet Preview">
           </div>
-          <div class="summary-item" style="margin-top: 6px;">
-            <span>Wrapping:</span>
-            <strong id="summaryWrap">Not selected yet</strong>
+          <p class="preview-caption" id="previewCaption">Select an option above to preview</p>
+        </div>
+
+        <div class="builder-summary">
+          <div>
+            <h4>Custom Recipe</h4>
+            <div class="summary-item">
+              <span>Base:</span>
+              <strong id="summaryBase">Not selected yet</strong>
+            </div>
+            <div class="summary-item" style="margin-top: 6px;">
+              <span>Wrapping:</span>
+              <strong id="summaryWrap">Not selected yet</strong>
+            </div>
+            <div class="summary-item" style="margin-top: 6px;">
+              <span>Enhancement:</span>
+              <strong id="summaryAddon">Not selected yet</strong>
+            </div>
           </div>
-          <div class="summary-item" style="margin-top: 6px;">
-            <span>Enhancement:</span>
-            <strong id="summaryAddon">Not selected yet</strong>
+
+          <div>
+            <div class="builder-total">
+              <span>Total:</span>
+              <span id="summaryTotal">₱0</span>
+            </div>
+            <button class="btn-primary" style="width:100%; text-align:center; padding: 12px 15px; font-size:11px;" onclick="orderCustomBouquet()">Send to Messenger</button>
           </div>
-        </div>
-
-        <div>
-          <div class="builder-total">
-            <span>Total:</span>
-            <span id="summaryTotal">₱0</span>
-          </div>
-          <button class="btn-primary" style="width:100%; text-align:center; padding: 12px 15px; font-size:11px;" onclick="orderCustomBouquet()">Send to Messenger</button>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section-padding" id="flowers">
-    <div class="section-header">
-      <h2>Bestselling Arrangements</h2>
-      <p>Thoughtfully curated blooms for life’s most meaningful moments.</p>
-    </div>
-
-    <div class="products-grid">
-      <div class="product-card" data-category="preserved">
-        <div class="img-container">
-          <span class="badge">Preserved</span>
-          <img src="images/preserve1.jpg" alt="Preserved Eternal Bouquet" id="img-preserve">
-        </div>
-        <div class="product-details">
-          <h3>Preserved Eternal Bouquet</h3>
-          <p>Handcrafted real preserved floral arrangement designed to last indefinitely.</p>
-          <div class="product-price">₱1,199</div>
-          <button class="btn-primary" onclick="addToCart('Preserved Eternal Bouquet', 1199, document.getElementById('img-preserve').src)">Add to Basket</button>
-        </div>
-      </div>
-
-      <div class="product-card" data-category="bestseller customized">
-        <div class="img-container">
-          <span class="badge">Bestseller</span>
-          <img src="images/sbuldak.jpg" alt="Velvet Roses Elegance" id="img-velvet">
-        </div>
-        <div class="product-details">
-          <h3>Velvet Roses Elegance</h3>
-          <p>Premium long-stemmed red roses styled in our signature wrapping.</p>
-          <div class="product-price">₱599</div>
-          <button class="btn-primary" onclick="addToCart('Velvet Roses Elegance', 599, document.getElementById('img-velvet').src)">Add to Basket</button>
-        </div>
-      </div>
-
-      <div class="product-card" data-category="customized">
-        <div class="img-container">
-          <span class="badge">Seasonal</span>
-          <img src="images/bbuldak.jpg" alt="Golden Sunshine Delight" id="img-sunshine">
-        </div>
-        <div class="product-details">
-          <h3>Golden Sunshine Delight</h3>
-          <p>Bright sunflowers, white lilies, and lush greenery bouquet.</p>
-          <div class="product-price">₱999</div>
-          <button class="btn-primary" onclick="addToCart('Golden Sunshine Delight', 999, document.getElementById('img-sunshine').src)">Add to Basket</button>
-        </div>
-      </div>
-
-      <div class="product-card" data-category="bestseller customized preserved">
-        <div class="img-container">
-          <span class="badge">Luxury</span>
-          <img src="images/signature.jpg" onerror="this.src='https://images.unsplash.com/photo-1563241527-3004b7be0ffd?auto=format&fit=crop&w=600&q=80'" alt="Aliry Signature Hatbox" id="img-hatbox">
-        </div>
-        <div class="product-details">
-          <h3>Aliry Signature Hatbox</h3>
-          <p>Our bespoke luxury floral layout arranged in a velvet gift box.</p>
-          <div class="product-price">₱2,299</div>
-          <button class="btn-primary" onclick="addToCart('Aliry Signature Hatbox', 2299, document.getElementById('img-hatbox').src)">Add to Basket</button>
-        </div>
-      </div>
-
-      <div class="product-card" data-category="customized">
-        <div class="img-container">
-          <span class="badge">Customized</span>
-          <img src="images/ferrero.jpg" onerror="this.src='ferrero.jpg'" alt="Ferrero Golden Romance Bouquet" id="img-ferrero">
-        </div>
-        <div class="product-details">
-          <h3>Ferrero Golden Romance</h3>
-          <p>A sweet indulgence featuring rich Ferrero Rocher chocolates beautifully arranged with delicate floral accents.</p>
-          <div class="product-price">₱1,599</div>
-          <button class="btn-primary" onclick="addToCart('Ferrero Golden Romance', 1599, document.getElementById('img-ferrero').src)">Add to Basket</button>
         </div>
       </div>
     </div>
@@ -1228,11 +1501,23 @@
 
   <footer id="contact">
     <div class="footer-grid">
-      <div class="footer-col">
-        <h4>ALIRY. FLOWERSHOP</h4>
-        <p style="font-size:13px; color:#ccc; line-height:1.6;">
+      <div class="footer-col" id="contactInfoCol">
+        <h4>ALIRY. FLOWER STUDIO</h4>
+        <p style="font-size:13px; color:#ccc; line-height:1.6; margin-bottom: 15px;">
           We create long-lasting, highly personalized floral gifts for people who want something more meaningful than ordinary fresh flowers.
         </p>
+        
+        <div class="social-icons-container" id="socialIconsContainer">
+          <a href="https://www.facebook.com/share/19NeHNZKQN/" target="_blank" class="social-icon-link facebook" aria-label="Facebook">
+            <svg viewBox="0 0 24 24"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/></svg>
+          </a>
+          <a href="https://www.tiktok.com" target="_blank" class="social-icon-link tiktok" aria-label="TikTok">
+            <svg viewBox="0 0 24 24"><path d="M19.589 6.686a4.793 4.793 0 0 1-3.77-4.242V2h-3.445v13.672a2.896 2.896 0 0 1-5.01 1.953 2.892 2.892 0 0 1 1.025-4.444v-3.414a6.335 6.335 0 0 0-4.44 6.091 6.338 6.338 0 0 0 6.34 6.339 6.342 6.342 0 0 0 6.34-6.339V8.675a8.19 8.19 0 0 0 4.77 1.52v-3.47a4.795 4.795 0 0 1-2.25-0.039z"/></svg>
+          </a>
+          <a href="https://www.instagram.com" target="_blank" class="social-icon-link instagram" aria-label="Instagram">
+            <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </a>
+        </div>
       </div>
 
       <div class="footer-col">
@@ -1247,27 +1532,80 @@
       <div class="footer-col">
         <h4>CUSTOMER CARE</h4>
         <ul>
-          <li><a href="#">Delivery Information</a></li>
-          <li><a href="#">Flower Care Guide</a></li>
-          <li><a href="#">Terms of Service</a></li>
-          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#" onclick="openModal('deliveryModal')">Delivery Information</a></li>
+          <li><a href="#" onclick="openModal('careModal')">Flower Care Guide</a></li>
+          <li><a href="#" onclick="openModal('termsModal')">Terms of Service</a></li>
+          <li><a href="#" onclick="openModal('privacyModal')">Privacy Policy</a></li>
         </ul>
       </div>
 
-      <div class="footer-col" id="contactInfoCol">
+      <div class="footer-col">
         <h4>CONTACT US</h4>
         <p style="font-size:13px; color:#ccc; line-height:1.8;">
           📍 Dasmariñas Cavite, Philippines<br>
           📞 Phone: 0939-228-5049<br>
-          📧 Email: aliryflowershop@gmail.com
+          📧 Email: aliryflowerstudio@gmail.com
         </p>
       </div>
     </div>
 
     <div class="footer-bottom">
-      <p>© 2026 ALIRY. Flowershop. All Rights Reserved.</p>
+      <p>© 2026 ALIRY. Flower Studio. All Rights Reserved.</p>
     </div>
   </footer>
+
+  <div class="modal-overlay" id="deliveryModal">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal('deliveryModal')">&times;</button>
+      <h3>Delivery Information</h3>
+      <p>At ALIRY. Flower Studio, we make sure every order arrives securely and on time.</p>
+      <ul>
+        <li><strong>Same-Day Delivery:</strong> Available for orders confirmed and processed before 2:00 PM within Dasmariñas, Cavite and nearby areas.</li>
+        <li><strong>Standard Shipping:</strong> Carefully packed and dispatched according to your chosen schedule or milestone date.</li>
+        <li><strong>Delivery Fees:</strong> Calculated dynamically at checkout or arranged directly via Messenger depending on exact distance and courier rates.</li>
+      </ul>
+      <p>For urgent requests or specific delivery time windows, please message us directly on our Facebook page.</p>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="careModal">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal('careModal')">&times;</button>
+      <h3>Flower Care Guide</h3>
+      <p>Keep your handmade blooms looking pristine and elegant for as long as possible with these simple care tips:</p>
+      <ul>
+        <li><strong>Preserved & Dried Flowers:</strong> Keep away from direct sunlight, high humidity, and water. No watering is required! Simply dust gently with a soft brush when necessary.</li>
+        <li><strong>Fresh Accent Blooms:</strong> If your arrangement includes fresh stems, keep them in a cool room away from direct heat sources and sunlight.</li>
+        <li><strong>Handling:</strong> Handle your bouquet wrapping with care to preserve the original artisan structure and shape.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="termsModal">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal('termsModal')">&times;</button>
+      <h3>Terms of Service</h3>
+      <p>Welcome to ALIRY. Flower Studio. By placing an order with us, you agree to the following terms:</p>
+      <ul>
+        <li><strong>Custom Orders:</strong> Because each bouquet is uniquely handcrafted, slight variations in floral shade and wrapping layout may occur.</li>
+        <li><strong>Orders & Payments:</strong> Orders are confirmed once payment arrangements have been verified and settled.</li>
+        <li><strong>Cancellations:</strong> Due to the perishable and bespoke nature of floral arrangements, cancellations must be made at least 24 hours prior to scheduled delivery or dispatch.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="privacyModal">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal('privacyModal')">&times;</button>
+      <h3>Privacy Policy</h3>
+      <p>Your privacy is important to us at ALIRY. Flower Studio.</p>
+      <ul>
+        <li><strong>Information Collection:</strong> We collect only necessary details (such as your name, delivery address, phone number, and card messages) strictly to fulfill and deliver your orders.</li>
+        <li><strong>Data Protection:</strong> Your personal information is kept secure and will never be sold, shared, or distributed to third-party marketing companies.</li>
+        <li><strong>Communication:</strong> We only reach out via phone or Messenger regarding your active orders, customer inquiries, or delivery updates.</li>
+      </ul>
+    </div>
+  </div>
 
   <div class="overlay" id="overlay"></div>
 
@@ -1289,7 +1627,6 @@
   <script>
     let cart = [];
 
-    // Track state (null when unselected)
     let currentCustom = {
       baseName: null,
       basePrice: 0,
@@ -1335,15 +1672,29 @@
 
     function highlightContact() {
       const contactCol = document.getElementById('contactInfoCol');
+      const socialContainer = document.getElementById('socialIconsContainer');
+      
       contactCol.classList.add('highlight-contact');
-      setTimeout(() => { contactCol.classList.remove('highlight-contact'); }, 1500);
+      socialContainer.classList.add('highlight-socials');
+      
+      setTimeout(() => { 
+        contactCol.classList.remove('highlight-contact'); 
+        socialContainer.classList.remove('highlight-socials'); 
+      }, 1800);
+    }
+
+    function openModal(modalId) {
+      document.getElementById(modalId).classList.add('active');
+    }
+
+    function closeModal(modalId) {
+      document.getElementById(modalId).classList.remove('active');
     }
 
     function setBuilderOption(type, name, price, imgPath, buttonEl) {
       const isAlreadySelected = buttonEl.classList.contains('selected');
       const parent = buttonEl.parentElement;
 
-      // Clear all selected states in this group
       parent.querySelectorAll('.builder-option').forEach(btn => btn.classList.remove('selected'));
 
       if (type === 'base') {
@@ -1384,7 +1735,6 @@
         }
       }
 
-      // Check if ANY option is still selected
       const hasAnySelection = currentCustom.baseName !== null || currentCustom.wrapName !== null || currentCustom.addonName !== null;
       const previewBox = document.getElementById('builderPreviewBox');
 
@@ -1395,7 +1745,6 @@
         }
         document.getElementById('previewCaption').textContent = `${currentCustom.baseName || 'Custom'} + ${currentCustom.wrapName || 'Arrangement'}`;
       } else {
-        // If everything is unselected, hide the preview container
         previewBox.classList.remove('visible');
       }
 
@@ -1417,7 +1766,7 @@
       const cardNote = document.getElementById('cardNote').value.trim();
       const messengerProfileUrl = "https://www.facebook.com/share/19NeHNZKQN/"; 
 
-      let orderMessage = "Hello ALIRY Flowershop! I would like to order a custom built bouquet:\n\n";
+      let orderMessage = "Hello ALIRY Flower Studio! I would like to order a custom built bouquet:\n\n";
       if (currentCustom.baseName) orderMessage += `• Flower Base: ${currentCustom.baseName}\n`;
       if (currentCustom.wrapName) orderMessage += `• Wrapping & Aesthetic: ${currentCustom.wrapName}\n`;
       if (currentCustom.addonName) orderMessage += `• Special Enhancement: ${currentCustom.addonName}\n`;
@@ -1496,6 +1845,11 @@
           card.classList.add('hidden');
         }
       });
+
+      const flowersSection = document.getElementById('flowers');
+      if (flowersSection) {
+        flowersSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
     }
 
     function proceedToMessengerCheckout() {
@@ -1505,7 +1859,7 @@
       }
 
       const messengerProfileUrl = "https://www.facebook.com/share/19NeHNZKQN/"; 
-      let orderMessage = "Hello ALIRY Flowershop! I would like to place an order:\n\n";
+      let orderMessage = "Hello ALIRY Flower Studio! I would like to place an order:\n\n";
       let totalPrice = 0;
 
       cart.forEach((item, index) => {
@@ -1515,10 +1869,10 @@
       });
 
       orderMessage += `\nTotal Amount: ₱${totalPrice.toLocaleString()}`;
-      orderMessage += "\n\nPlease let me know how to proceed with payment and delivery. Thank you!";
+      orderMessage += "\n\nPlease let me know how to proceed with payment and delivery. Trust you'll guide me!";
 
       navigator.clipboard.writeText(orderMessage).then(() => {
-        alert("Your order details have been copied to your clipboard! Opening Messenger now so you can paste and send your order.");
+        alert("Your order details have-been copied to your clipboard! Opening Messenger now so you can paste and send your order.");
         window.open(messengerProfileUrl, '_blank');
       }).catch(() => {
         window.open(messengerProfileUrl, '_blank');
