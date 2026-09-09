@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ALIRY. Flower Studio | Luxury Flowers & Floral Gifts</title>
 
+  <!-- Google Fonts Integration -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -19,7 +20,7 @@
       --text-dark: #3a2e2e;
       --text-muted: #786666;
       --border-light: #f0e6e6;
-      --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      --transition-smooth: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     * {
@@ -29,7 +30,6 @@
       scroll-behavior: smooth;
     }
 
-    /* ELIMINATE TOUCH DELAY & ACCELERATE MOBILE INTERACTIONS */
     button, .builder-option, input, label, a {
       touch-action: manipulation;
       cursor: pointer;
@@ -83,10 +83,8 @@
       position: relative;
       padding: 5px 10px;
       border-radius: 8px;
-      transition: var(--transition-smooth);
     }
 
-    /* INTERACTIVE BLOOM CONTAINER FOR LOGO HOVER */
     .logo-bloom-wrapper {
       position: relative;
       display: flex;
@@ -98,72 +96,92 @@
       width: auto;
       object-fit: contain;
       mix-blend-mode: multiply;
-      transition: var(--transition-smooth);
       position: relative;
       z-index: 2;
+      transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
 
     .logo-container:hover .logo-img {
-      transform: scale(1.05);
+      transform: scale(1.04) rotate(-1deg);
     }
 
-    /* SVG FLOWER BLOOM OVERLAY ANIMATION ON HOVER */
+    /* MAGICAL BLOOM OVERLAY ANIMATION */
     .bloom-svg-overlay {
       position: absolute;
-      top: -25px;
-      left: -30px;
-      width: 120px;
-      height: 120px;
+      top: -45px;
+      left: -50px;
+      width: 160px;
+      height: 160px;
       pointer-events: none;
       z-index: 1;
       opacity: 0;
-      transform: scale(0.5);
-      transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      transform: scale(0.6) rotate(-15deg);
+      transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
 
     .logo-container:hover .bloom-svg-overlay {
       opacity: 1;
-      transform: scale(1);
+      transform: scale(1) rotate(0deg);
     }
 
-    /* Stem & Branch Growing Path Animation */
-    .bloom-stem {
+    .magical-stem {
       stroke: #914f61;
-      stroke-width: 2.5;
+      stroke-width: 2;
       stroke-linecap: round;
       fill: none;
-      stroke-dasharray: 150;
-      stroke-dashoffset: 150;
-      transition: stroke-dashoffset 0.8s ease-in-out;
+      stroke-dasharray: 120;
+      stroke-dashoffset: 120;
+      transition: stroke-dashoffset 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.1s;
     }
 
-    .logo-container:hover .bloom-stem {
+    .logo-container:hover .magical-stem {
       stroke-dashoffset: 0;
     }
 
-    /* Flower Petals Blooming Animation */
-    .bloom-petal {
-      fill: #d8a0a6;
-      stroke: #914f61;
+    .magical-branch {
+      stroke: #d8a0a6;
       stroke-width: 1.5;
-      transform: scale(0);
-      transform-origin: center;
-      transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.3s;
+      stroke-linecap: round;
+      fill: none;
+      stroke-dasharray: 60;
+      stroke-dashoffset: 60;
+      transition: stroke-dashoffset 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.3s;
     }
 
-    .logo-container:hover .bloom-petal {
+    .logo-container:hover .magical-branch {
+      stroke-dashoffset: 0;
+    }
+
+    .magical-petal {
+      fill: #f5cfd5;
+      stroke: #914f61;
+      stroke-width: 0.8;
+      transform: scale(0);
+      transform-origin: center;
+      transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) 0.5s;
+    }
+
+    .logo-container:hover .magical-petal {
       transform: scale(1);
     }
 
-    .bloom-center {
-      fill: #914f61;
+    .magical-sparkle {
+      fill: #e6b800;
+      opacity: 0;
       transform: scale(0);
       transform-origin: center;
-      transition: transform 0.4s ease 0.6s;
+      transition: all 0.5s ease 0.7s;
     }
 
-    .logo-container:hover .bloom-center {
-      transform: scale(1);
+    .logo-container:hover .magical-sparkle {
+      opacity: 1;
+      transform: scale(1.2);
+      animation: sparkleFloat 2s infinite ease-in-out alternate;
+    }
+
+    @keyframes sparkleFloat {
+      0% { transform: scale(1.1) translateY(0); }
+      100% { transform: scale(1.3) translateY(-3px); }
     }
 
     .logo-text {
@@ -269,7 +287,6 @@
       color: var(--text-dark);
     }
 
-    /* CATEGORIES BAR */
     .categories-bar {
       background: #f7eee9;
       display: flex;
@@ -304,7 +321,6 @@
       box-shadow: 0 4px 12px rgba(145, 79, 97, 0.25);
     }
 
-    /* HERO SECTION */
     .hero {
       min-height: 85vh;
       display: flex;
@@ -362,7 +378,6 @@
       transform: translateY(-3px);
     }
 
-    /* VALUE PROPOSITIONS */
     .trust-bar {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -385,7 +400,6 @@
       color: var(--text-muted);
     }
 
-    /* OUR STORY SECTION */
     .story-section {
       padding: 100px 8%;
       background: #ffffff;
@@ -422,11 +436,10 @@
     .story-content p {
       font-size: 15px;
       color: var(--text-muted);
-      margin-bottom: 20px;
+      margin-bottom: 15px;
       line-height: 1.8;
     }
 
-    /* BUILD YOUR OWN BOUQUET SECTION */
     .builder-section {
       padding: 100px 8%;
       background: #f7eee9;
@@ -443,8 +456,6 @@
       grid-template-columns: 1.5fr 1fr 1fr;
       gap: 30px;
       align-items: start;
-      will-change: transform;
-      transform: translateZ(0);
     }
 
     .builder-steps h3 {
@@ -517,7 +528,6 @@
       background: white;
     }
 
-    /* LIVE PREVIEW BOX */
     .builder-preview-box {
       background: var(--bg-cream);
       border-radius: 8px;
@@ -566,7 +576,6 @@
       font-family: 'Playfair Display', serif;
     }
 
-    /* SUMMARY COLUMN */
     .builder-summary {
       background: var(--bg-cream);
       padding: 25px;
@@ -613,7 +622,6 @@
       padding-top: 12px;
     }
 
-    /* PRODUCT COLLECTION */
     .section-padding {
       padding: 100px 8%;
       scroll-margin-top: 130px;
@@ -733,7 +741,6 @@
       margin-top: auto;
     }
 
-    /* REVIEWS SECTION */
     .reviews-section {
       background: #f7eee9;
       text-align: center;
@@ -752,7 +759,6 @@
       padding: 35px 25px;
       border-radius: 8px;
       box-shadow: 0 4px 15px rgba(0,0,0,0.03);
-      transition: var(--transition-smooth);
     }
 
     .stars {
@@ -777,7 +783,6 @@
       letter-spacing: 1.5px;
     }
 
-    /* MODAL STYLES FOR CUSTOMER CARE PAGES */
     .modal-overlay {
       position: fixed;
       top: 0;
@@ -807,12 +812,6 @@
       box-shadow: 0 15px 40px rgba(0,0,0,0.15);
       overflow-y: auto;
       position: relative;
-      animation: modalFadeIn 0.3s ease;
-    }
-
-    @keyframes modalFadeIn {
-      from { opacity: 0; transform: translateY(15px); }
-      to { opacity: 1; transform: translateY(0); }
     }
 
     .modal-close {
@@ -850,12 +849,10 @@
       margin-bottom: 15px;
     }
 
-    /* ORIGINAL BRAND SOCIAL ICONS STYLING */
     .social-icons-container {
       display: flex;
       gap: 12px;
       margin-top: 15px;
-      transition: var(--transition-smooth);
       border-radius: 30px;
       padding: 4px;
     }
@@ -879,47 +876,33 @@
       transition: var(--transition-smooth);
     }
 
-    /* Original Brand Colors & Hover Effects */
-    .social-icon-link.facebook svg {
-      fill: #1877F2;
-    }
+    .social-icon-link.facebook svg { fill: #1877F2; }
     .social-icon-link.facebook:hover {
       background: #1877F2;
       border-color: #1877F2;
       transform: translateY(-3px);
       box-shadow: 0 6px 15px rgba(24, 119, 242, 0.4);
     }
-    .social-icon-link.facebook:hover svg {
-      fill: #ffffff;
-    }
+    .social-icon-link.facebook:hover svg { fill: #ffffff; }
 
-    .social-icon-link.tiktok svg {
-      fill: #25F4EE;
-    }
+    .social-icon-link.tiktok svg { fill: #25F4EE; }
     .social-icon-link.tiktok:hover {
       background: #000000;
       border-color: #25F4EE;
       transform: translateY(-3px);
       box-shadow: 0 6px 15px rgba(37, 244, 238, 0.3);
     }
-    .social-icon-link.tiktok:hover svg {
-      fill: #ffffff;
-    }
+    .social-icon-link.tiktok:hover svg { fill: #ffffff; }
 
-    .social-icon-link.instagram svg {
-      fill: #E4405F;
-    }
+    .social-icon-link.instagram svg { fill: #E4405F; }
     .social-icon-link.instagram:hover {
       background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
       border-color: #d6249f;
       transform: translateY(-3px);
       box-shadow: 0 6px 15px rgba(214, 36, 159, 0.4);
     }
-    .social-icon-link.instagram:hover svg {
-      fill: #ffffff;
-    }
+    .social-icon-link.instagram:hover svg { fill: #ffffff; }
 
-    /* FOOTER */
     footer {
       background: var(--text-dark);
       color: white;
@@ -935,7 +918,6 @@
       border: 1px solid var(--accent);
     }
 
-    /* HIGHLIGHT EFFECT FOR SOCIAL ICONS CONTAINER */
     .social-icons-container.highlight-socials {
       animation: socialGlowPulse 1.5s ease;
       background: rgba(216, 160, 166, 0.25);
@@ -990,7 +972,6 @@
       color: #aaa;
     }
 
-    /* OVERLAY & DRAWERS */
     .overlay {
       position: fixed;
       top: 0;
@@ -1013,8 +994,6 @@
       flex-direction: column;
       box-shadow: -10px 0 30px rgba(0,0,0,0.1);
       overflow-y: auto;
-      -webkit-overflow-scrolling: touch;
-      overscroll-behavior-y: contain;
     }
 
     .cart-drawer {
@@ -1082,7 +1061,6 @@
       font-family: 'Playfair Display', serif;
     }
 
-    /* MOBILE NAV DRAWER */
     .mobile-nav {
       left: -100%;
       width: 75%;
@@ -1116,7 +1094,6 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* RESPONSIVE DESIGN */
     @media (max-width: 992px) {
       .products-grid, .reviews-grid, .trust-bar, .footer-grid, .story-section {
         grid-template-columns: repeat(2, 1fr);
@@ -1183,23 +1160,33 @@
 
       <a href="#home" class="logo-container" onclick="resetToHome()">
         <div class="logo-bloom-wrapper">
-          <svg class="bloom-svg-overlay" viewBox="0 0 100 100">
-            <path class="bloom-stem" d="M20,90 Q30,60 50,45 T80,25" />
-            
-            <g transform="translate(80, 25)">
-              <ellipse class="bloom-petal" cx="0" cy="-12" rx="6" ry="10" />
-              <ellipse class="bloom-petal" cx="12" cy="-4" rx="10" ry="6" transform="rotate(30 12 -4)" />
-              <ellipse class="bloom-petal" cx="10" cy="10" rx="6" ry="10" transform="rotate(60 10 10)" />
-              <ellipse class="bloom-petal" cx="-2" cy="12" rx="10" ry="6" transform="rotate(90 -2 12)" />
-              <ellipse class="bloom-petal" cx="-12" cy="4" rx="6" ry="10" transform="rotate(120 -12 4)" />
-              <ellipse class="bloom-petal" cx="-10" cy="-10" rx="10" ry="6" transform="rotate(150 -10 -10)" />
-              <circle class="bloom-center" cx="0" cy="0" r="4.5" />
+          <!-- Magical Blooming Flower Animation with Stems, Branches, Petals, and Sparkles -->
+          <svg class="bloom-svg-overlay" viewBox="0 0 120 120">
+            <!-- Main Growing Stems -->
+            <path class="magical-stem" d="M30 90 Q 40 70, 50 50 T 60 25" />
+            <path class="magical-branch" d="M50 50 Q 35 45, 25 35" />
+            <path class="magical-branch" d="M45 62 Q 60 55, 72 45" />
+
+            <!-- Leaves -->
+            <ellipse class="magical-petal" cx="25" cy="35" rx="5" ry="3" transform="rotate(-30 25 35)" />
+            <ellipse class="magical-petal" cx="72" cy="45" rx="5" ry="3" transform="rotate(30 72 45)" />
+
+            <!-- Blooming Flower Head (Petals) -->
+            <g transform="translate(60, 22)">
+              <ellipse class="magical-petal" cx="0" cy="-12" rx="5" ry="9" />
+              <ellipse class="magical-petal" cx="10" cy="-6" rx="5" ry="9" transform="rotate(60 10 -6)" />
+              <ellipse class="magical-petal" cx="10" cy="6" rx="5" ry="9" transform="rotate(120 10 6)" />
+              <ellipse class="magical-petal" cx="0" cy="12" rx="5" ry="9" transform="rotate(180 0 12)" />
+              <ellipse class="magical-petal" cx="-10" cy="6" rx="5" ry="9" transform="rotate(240 -10 6)" />
+              <ellipse class="magical-petal" cx="-10" cy="-6" rx="5" ry="9" transform="rotate(300 -10 -6)" />
+              <!-- Center Flower Core -->
+              <circle cx="0" cy="0" r="4" fill="#914f61" />
             </g>
 
-            <g transform="translate(45, 50)">
-              <path class="bloom-stem" d="M0,0 Q-10,-10 -15,-5" style="stroke-dasharray: 20; stroke-dashoffset: 0;" />
-              <circle class="bloom-center" cx="-17" cy="-6" r="3" />
-            </g>
+            <!-- Magical Sparkles -->
+            <circle class="magical-sparkle" cx="50" cy="15" r="2" />
+            <circle class="magical-sparkle" cx="78" cy="30" r="1.5" />
+            <circle class="magical-sparkle" cx="20" cy="20" r="1.5" />
           </svg>
 
           <img src="logo2.jpg" alt="ALIRY. Flower Studio" class="logo-img" onerror="this.style.display='none';">
@@ -1284,8 +1271,10 @@
     </div>
     <div class="story-content">
       <h2>Crafted with Dedication & Heart</h2>
-      <p>ALIRY. Flower Studio was built out of a profound passion for artistry and a deep-seated work ethic. As a hardworking artisan dedicated to the craft, every single bouquet is meticulously styled to ensure that elegance meets perfection.</p>
-      <p>We believe that flowers are more than just gifts—they are heartfelt expressions. Through careful curation and a commitment to quality, our mission is to turn your special milestones into timeless memories with stunning floral designs made to last.</p>
+      <p>ALIRY Flower Studio began with a simple love for flowers and the joy of creating something beautiful by hand.</p>
+      <p>For us, every bouquet is more than an arrangement. It is a collection of carefully chosen flowers, colors, and details, brought together with thought and intention. We take our time with each creation because we believe the little things are what make a bouquet truly special.</p>
+      <p>Flowers have a quiet way of saying what words sometimes cannot. They can celebrate love, remember a milestone, brighten an ordinary day, or simply remind someone that they are thought of.</p>
+      <p>At ALIRY, we create floral arrangements that feel personal, timeless, and effortlessly elegant. Each piece is made with care, from the first flower chosen to the final detail, so that every bouquet becomes part of a moment worth remembering.</p>
       <a href="#flowers" class="btn-primary" style="margin-top: 10px;">Explore Collections</a>
     </div>
   </section>
@@ -1508,13 +1497,15 @@
         </p>
         
         <div class="social-icons-container" id="socialIconsContainer">
-          <a href="https://www.facebook.com/share/19NeHNZKQN/" target="_blank" class="social-icon-link facebook" aria-label="Facebook">
+          <!-- Updated Facebook Link -->
+          <a href="https://www.facebook.com/share/1QPPPz22Bi/" target="_blank" class="social-icon-link facebook" aria-label="Facebook">
             <svg viewBox="0 0 24 24"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/></svg>
           </a>
           <a href="https://www.tiktok.com" target="_blank" class="social-icon-link tiktok" aria-label="TikTok">
             <svg viewBox="0 0 24 24"><path d="M19.589 6.686a4.793 4.793 0 0 1-3.77-4.242V2h-3.445v13.672a2.896 2.896 0 0 1-5.01 1.953 2.892 2.892 0 0 1 1.025-4.444v-3.414a6.335 6.335 0 0 0-4.44 6.091 6.338 6.338 0 0 0 6.34 6.339 6.342 6.342 0 0 0 6.34-6.339V8.675a8.19 8.19 0 0 0 4.77 1.52v-3.47a4.795 4.795 0 0 1-2.25-0.039z"/></svg>
           </a>
-          <a href="https://www.instagram.com" target="_blank" class="social-icon-link instagram" aria-label="Instagram">
+          <!-- Updated Instagram Link -->
+          <a href="https://www.instagram.com/aliry.flowerstudio?stkn=MWp4eGdtd3JjcDE4NA==" target="_blank" class="social-icon-link instagram" aria-label="Instagram">
             <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
           </a>
         </div>
@@ -1560,11 +1551,8 @@
       <h3>Delivery Information</h3>
       <p>At ALIRY. Flower Studio, we make sure every order arrives securely and on time.</p>
       <ul>
-        <li><strong>Same-Day Delivery:</strong> Available for orders confirmed and processed before 2:00 PM within Dasmariñas, Cavite and nearby areas.</li>
-        <li><strong>Standard Shipping:</strong> Carefully packed and dispatched according to your chosen schedule or milestone date.</li>
-        <li><strong>Delivery Fees:</strong> Calculated dynamically at checkout or arranged directly via Messenger depending on exact distance and courier rates.</li>
+        <li><strong>Same-Day Delivery:</strong> Available for orders confirmed before 2:00 PM within Dasmariñas, Cavite and nearby areas.</li>
       </ul>
-      <p>For urgent requests or specific delivery time windows, please message us directly on our Facebook page.</p>
     </div>
   </div>
 
@@ -1572,11 +1560,9 @@
     <div class="modal-content">
       <button class="modal-close" onclick="closeModal('careModal')">&times;</button>
       <h3>Flower Care Guide</h3>
-      <p>Keep your handmade blooms looking pristine and elegant for as long as possible with these simple care tips:</p>
+      <p>Keep your handmade blooms looking pristine:</p>
       <ul>
-        <li><strong>Preserved & Dried Flowers:</strong> Keep away from direct sunlight, high humidity, and water. No watering is required! Simply dust gently with a soft brush when necessary.</li>
-        <li><strong>Fresh Accent Blooms:</strong> If your arrangement includes fresh stems, keep them in a cool room away from direct heat sources and sunlight.</li>
-        <li><strong>Handling:</strong> Handle your bouquet wrapping with care to preserve the original artisan structure and shape.</li>
+        <li><strong>Preserved & Dried Flowers:</strong> Keep away from direct sunlight, high humidity, and water.</li>
       </ul>
     </div>
   </div>
@@ -1585,12 +1571,7 @@
     <div class="modal-content">
       <button class="modal-close" onclick="closeModal('termsModal')">&times;</button>
       <h3>Terms of Service</h3>
-      <p>Welcome to ALIRY. Flower Studio. By placing an order with us, you agree to the following terms:</p>
-      <ul>
-        <li><strong>Custom Orders:</strong> Because each bouquet is uniquely handcrafted, slight variations in floral shade and wrapping layout may occur.</li>
-        <li><strong>Orders & Payments:</strong> Orders are confirmed once payment arrangements have been verified and settled.</li>
-        <li><strong>Cancellations:</strong> Due to the perishable and bespoke nature of floral arrangements, cancellations must be made at least 24 hours prior to scheduled delivery or dispatch.</li>
-      </ul>
+      <p>By placing an order with us, you agree to our policies regarding custom handcrafted variations and confirmation steps.</p>
     </div>
   </div>
 
@@ -1598,12 +1579,7 @@
     <div class="modal-content">
       <button class="modal-close" onclick="closeModal('privacyModal')">&times;</button>
       <h3>Privacy Policy</h3>
-      <p>Your privacy is important to us at ALIRY. Flower Studio.</p>
-      <ul>
-        <li><strong>Information Collection:</strong> We collect only necessary details (such as your name, delivery address, phone number, and card messages) strictly to fulfill and deliver your orders.</li>
-        <li><strong>Data Protection:</strong> Your personal information is kept secure and will never be sold, shared, or distributed to third-party marketing companies.</li>
-        <li><strong>Communication:</strong> We only reach out via phone or Messenger regarding your active orders, customer inquiries, or delivery updates.</li>
-      </ul>
+      <p>We collect only necessary information to process and deliver your orders securely.</p>
     </div>
   </div>
 
@@ -1614,6 +1590,14 @@
       <h3 style="color:var(--primary); font-weight:normal;">Your Shopping Basket</h3>
       <button class="close-btn" id="closeCartBtn">&times;</button>
     </div>
+    
+    <div style="padding: 10px 0; border-bottom: 1px solid var(--border-light); display: flex; justify-content: space-between; align-items: center;">
+      <label style="font-size: 13px; cursor: pointer; display: flex; align-items: center; gap: 8px;">
+        <input type="checkbox" id="selectAllCheckbox" onchange="toggleSelectAll(this)" checked> Select All
+      </label>
+      <span id="selectedCountText" style="font-size: 12px; color: var(--text-muted);">0 items selected</span>
+    </div>
+
     <div class="cart-items" id="cartItems"></div>
     <div style="border-top: 1px solid var(--border-light); padding-top: 20px;">
       <div class="cart-total">
@@ -1626,16 +1610,7 @@
 
   <script>
     let cart = [];
-
-    let currentCustom = {
-      baseName: null,
-      basePrice: 0,
-      wrapName: null,
-      wrapPrice: 0,
-      addonName: null,
-      addonPrice: 0,
-      image: ''
-    };
+    let currentCustom = { baseName: null, basePrice: 0, wrapName: null, wrapPrice: 0, addonName: null, addonPrice: 0, image: '' };
 
     const overlay = document.getElementById('overlay');
     const cartDrawer = document.getElementById('cartDrawer');
@@ -1673,66 +1648,31 @@
     function highlightContact() {
       const contactCol = document.getElementById('contactInfoCol');
       const socialContainer = document.getElementById('socialIconsContainer');
-      
       contactCol.classList.add('highlight-contact');
       socialContainer.classList.add('highlight-socials');
-      
       setTimeout(() => { 
         contactCol.classList.remove('highlight-contact'); 
         socialContainer.classList.remove('highlight-socials'); 
       }, 1800);
     }
 
-    function openModal(modalId) {
-      document.getElementById(modalId).classList.add('active');
-    }
-
-    function closeModal(modalId) {
-      document.getElementById(modalId).classList.remove('active');
-    }
+    function openModal(modalId) { document.getElementById(modalId).classList.add('active'); }
+    function closeModal(modalId) { document.getElementById(modalId).classList.remove('active'); }
 
     function setBuilderOption(type, name, price, imgPath, buttonEl) {
       const isAlreadySelected = buttonEl.classList.contains('selected');
       const parent = buttonEl.parentElement;
-
       parent.querySelectorAll('.builder-option').forEach(btn => btn.classList.remove('selected'));
 
       if (type === 'base') {
-        if (isAlreadySelected) {
-          currentCustom.baseName = null;
-          currentCustom.basePrice = 0;
-          document.getElementById('summaryBase').textContent = 'Not selected yet';
-        } else {
-          buttonEl.classList.add('selected');
-          currentCustom.baseName = name;
-          currentCustom.basePrice = price;
-          if (imgPath) currentCustom.image = imgPath;
-          document.getElementById('summaryBase').textContent = name;
-        }
+        if (isAlreadySelected) { currentCustom.baseName = null; currentCustom.basePrice = 0; document.getElementById('summaryBase').textContent = 'Not selected yet'; }
+        else { buttonEl.classList.add('selected'); currentCustom.baseName = name; currentCustom.basePrice = price; if (imgPath) currentCustom.image = imgPath; document.getElementById('summaryBase').textContent = name; }
       } else if (type === 'wrap') {
-        if (isAlreadySelected) {
-          currentCustom.wrapName = null;
-          currentCustom.wrapPrice = 0;
-          document.getElementById('summaryWrap').textContent = 'Not selected yet';
-        } else {
-          buttonEl.classList.add('selected');
-          currentCustom.wrapName = name;
-          currentCustom.wrapPrice = price;
-          if (imgPath) currentCustom.image = imgPath;
-          document.getElementById('summaryWrap').textContent = name;
-        }
+        if (isAlreadySelected) { currentCustom.wrapName = null; currentCustom.wrapPrice = 0; document.getElementById('summaryWrap').textContent = 'Not selected yet'; }
+        else { buttonEl.classList.add('selected'); currentCustom.wrapName = name; currentCustom.wrapPrice = price; if (imgPath) currentCustom.image = imgPath; document.getElementById('summaryWrap').textContent = name; }
       } else if (type === 'addon') {
-        if (isAlreadySelected) {
-          currentCustom.addonName = null;
-          currentCustom.addonPrice = 0;
-          document.getElementById('summaryAddon').textContent = 'Not selected yet';
-        } else {
-          buttonEl.classList.add('selected');
-          currentCustom.addonName = name;
-          currentCustom.addonPrice = price;
-          if (imgPath) currentCustom.image = imgPath;
-          document.getElementById('summaryAddon').textContent = name;
-        }
+        if (isAlreadySelected) { currentCustom.addonName = null; currentCustom.addonPrice = 0; document.getElementById('summaryAddon').textContent = 'Not selected yet'; }
+        else { buttonEl.classList.add('selected'); currentCustom.addonName = name; currentCustom.addonPrice = price; if (imgPath) currentCustom.image = imgPath; document.getElementById('summaryAddon').textContent = name; }
       }
 
       const hasAnySelection = currentCustom.baseName !== null || currentCustom.wrapName !== null || currentCustom.addonName !== null;
@@ -1740,14 +1680,11 @@
 
       if (hasAnySelection) {
         previewBox.classList.add('visible');
-        if (currentCustom.image) {
-          document.getElementById('previewImage').src = currentCustom.image;
-        }
+        if (currentCustom.image) document.getElementById('previewImage').src = currentCustom.image;
         document.getElementById('previewCaption').textContent = `${currentCustom.baseName || 'Custom'} + ${currentCustom.wrapName || 'Arrangement'}`;
       } else {
         previewBox.classList.remove('visible');
       }
-
       updateBuilderTotal();
     }
 
@@ -1761,25 +1698,21 @@
         alert("Please select at least one custom builder option first!");
         return;
       }
-
       const total = currentCustom.basePrice + currentCustom.wrapPrice + currentCustom.addonPrice;
       const cardNote = document.getElementById('cardNote').value.trim();
-      const messengerProfileUrl = "https://www.facebook.com/share/19NeHNZKQN/"; 
+      const messengerProfileUrl = "https://www.facebook.com/share/1QPPPz22Bi/"; 
 
       let orderMessage = "Hello ALIRY Flower Studio! I would like to order a custom built bouquet:\n\n";
       if (currentCustom.baseName) orderMessage += `• Flower Base: ${currentCustom.baseName}\n`;
       if (currentCustom.wrapName) orderMessage += `• Wrapping & Aesthetic: ${currentCustom.wrapName}\n`;
       if (currentCustom.addonName) orderMessage += `• Special Enhancement: ${currentCustom.addonName}\n`;
-      if (cardNote) { orderMessage += `• Card Message: "${cardNote}"\n`; }
-      orderMessage += `\nCustom Total Amount: ₱${total.toLocaleString()}`;
-      orderMessage += "\n\nPlease let me know how to proceed with payment and delivery. Thank you!";
+      if (cardNote) orderMessage += `• Card Message: "${cardNote}"\n`;
+      orderMessage += `\nCustom Total Amount: ₱${total.toLocaleString()}\n\nPlease let me know how to proceed with payment and delivery.`;
 
       navigator.clipboard.writeText(orderMessage).then(() => {
-        alert("Your custom bouquet recipe has been copied to your clipboard! Opening Messenger now so you can paste and send your request.");
+        alert("Custom recipe copied to clipboard! Opening Messenger...");
         window.open(messengerProfileUrl, '_blank');
-      }).catch(() => {
-        window.open(messengerProfileUrl, '_blank');
-      });
+      }).catch(() => { window.open(messengerProfileUrl, '_blank'); });
     }
 
     function addToCart(name, price, image) {
@@ -1787,32 +1720,53 @@
       if (existing) {
         existing.quantity += 1;
       } else {
-        cart.push({ name, price, image, quantity: 1 });
+        cart.push({ name, price, image, quantity: 1, selected: true });
       }
       updateCartUI();
       cartDrawer.classList.add('active');
       overlay.style.display = 'block';
     }
 
+    function toggleSelectItem(index) {
+      cart[index].selected = !cart[index].selected;
+      updateCartUI();
+    }
+
+    function toggleSelectAll(masterCheckbox) {
+      const isChecked = masterCheckbox.checked;
+      cart.forEach(item => {
+        item.selected = isChecked;
+      });
+      updateCartUI();
+    }
+
     function updateCartUI() {
       const cartItemsContainer = document.getElementById('cartItems');
       const cartBadge = document.getElementById('cartBadge');
       const cartTotal = document.getElementById('cartTotal');
-
+      const selectAllCheckbox = document.getElementById('selectAllCheckbox');
+      const selectedCountText = document.getElementById('selectedCountText');
+      
       cartItemsContainer.innerHTML = '';
       let totalCount = 0;
-      let totalPrice = 0;
+      let selectedPrice = 0;
+      let selectedCount = 0;
 
       if (cart.length === 0) {
         cartItemsContainer.innerHTML = '<p style="text-align:center; color:#888; margin-top:20px;">Your basket is currently empty.</p>';
+        if (selectAllCheckbox) selectAllCheckbox.checked = false;
       } else {
-        cart.forEach(item => {
+        cart.forEach((item, index) => {
           totalCount += item.quantity;
-          totalPrice += item.price * item.quantity;
+          if (item.selected) {
+            selectedPrice += item.price * item.quantity;
+            selectedCount += item.quantity;
+          }
 
           const el = document.createElement('div');
           el.className = 'cart-item';
           el.innerHTML = `
+            <input type="checkbox" ${item.selected ? 'checked' : ''} onchange="toggleSelectItem(${index})" style="cursor: pointer;">
             <img src="${item.image}" alt="${item.name}" class="cart-item-img">
             <div class="cart-item-details">
               <h4 style="font-weight:normal; font-size:14px; font-family:'Playfair Display', serif;">${item.name}</h4>
@@ -1822,61 +1776,57 @@
           `;
           cartItemsContainer.appendChild(el);
         });
+
+        if (selectAllCheckbox) {
+          const allSelected = cart.every(item => item.selected);
+          selectAllCheckbox.checked = allSelected;
+        }
       }
 
       cartBadge.textContent = totalCount;
-      cartTotal.textContent = `₱${totalPrice.toLocaleString()}`;
+      cartTotal.textContent = `₱${selectedPrice.toLocaleString()}`;
+      if (selectedCountText) {
+        selectedCountText.textContent = `${selectedCount} item(s) selected`;
+      }
     }
 
     function filterCategory(category, buttonElement) {
       const cards = document.querySelectorAll('.product-card');
       const tabs = document.querySelectorAll('.category-tab');
-
       if (buttonElement) {
         tabs.forEach(tab => tab.classList.remove('active'));
         buttonElement.classList.add('active');
       }
-
       cards.forEach(card => {
         const cardCategories = card.getAttribute('data-category').split(' ');
-        if (category === 'all' || cardCategories.includes(category)) {
-          card.classList.remove('hidden');
-        } else {
-          card.classList.add('hidden');
-        }
+        if (category === 'all' || cardCategories.includes(category)) card.classList.remove('hidden');
+        else card.classList.add('hidden');
       });
-
-      const flowersSection = document.getElementById('flowers');
-      if (flowersSection) {
-        flowersSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
+      document.getElementById('flowers').scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 
     function proceedToMessengerCheckout() {
-      if (cart.length === 0) {
-        alert("Your shopping basket is empty!");
-        return;
+      const activeItems = cart.filter(item => item.selected);
+      if (activeItems.length === 0) { 
+        alert("Please select at least one item to checkout!"); 
+        return; 
       }
-
-      const messengerProfileUrl = "https://www.facebook.com/share/19NeHNZKQN/"; 
-      let orderMessage = "Hello ALIRY Flower Studio! I would like to place an order:\n\n";
+      
+      const messengerProfileUrl = "https://www.facebook.com/share/1QPPPz22Bi/"; 
+      let orderMessage = "Hello ALIRY Flower Studio! I would like to place an order for the selected items:\n\n";
       let totalPrice = 0;
-
-      cart.forEach((item, index) => {
-        const itemTotal = item.price * item.quantity;
-        totalPrice += itemTotal;
-        orderMessage += `${index + 1}. ${item.name} (x${item.quantity}) - ₱${itemTotal.toLocaleString()}\n`;
+      
+      activeItems.forEach((item, index) => {
+        totalPrice += item.price * item.quantity;
+        orderMessage += `${index + 1}. ${item.name} (x${item.quantity}) - ₱${(item.price * item.quantity).toLocaleString()}\n`;
       });
-
-      orderMessage += `\nTotal Amount: ₱${totalPrice.toLocaleString()}`;
-      orderMessage += "\n\nPlease let me know how to proceed with payment and delivery. Trust you'll guide me!";
+      
+      orderMessage += `\nTotal Amount: ₱${totalPrice.toLocaleString()}\n\nPlease guide me with payment and delivery.`;
 
       navigator.clipboard.writeText(orderMessage).then(() => {
-        alert("Your order details have-been copied to your clipboard! Opening Messenger now so you can paste and send your order.");
+        alert("Order details copied to clipboard! Opening Messenger...");
         window.open(messengerProfileUrl, '_blank');
-      }).catch(() => {
-        window.open(messengerProfileUrl, '_blank');
-      });
+      }).catch(() => { window.open(messengerProfileUrl, '_blank'); });
     }
   </script>
 
