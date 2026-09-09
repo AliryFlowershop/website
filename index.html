@@ -1700,8 +1700,9 @@
       }
       const total = currentCustom.basePrice + currentCustom.wrapPrice + currentCustom.addonPrice;
       const cardNote = document.getElementById('cardNote').value.trim();
-      const messengerProfileUrl = "https://www.facebook.com/share/1QPPPz22Bi/"; 
-
+      
+      // Updated direct Messenger click-to-chat URL with pre-filled text
+      const pageId = "1269798289555332";
       let orderMessage = "Hello ALIRY Flower Studio! I would like to order a custom built bouquet:\n\n";
       if (currentCustom.baseName) orderMessage += `• Flower Base: ${currentCustom.baseName}\n`;
       if (currentCustom.wrapName) orderMessage += `• Wrapping & Aesthetic: ${currentCustom.wrapName}\n`;
@@ -1709,10 +1710,8 @@
       if (cardNote) orderMessage += `• Card Message: "${cardNote}"\n`;
       orderMessage += `\nCustom Total Amount: ₱${total.toLocaleString()}\n\nPlease let me know how to proceed with payment and delivery.`;
 
-      navigator.clipboard.writeText(orderMessage).then(() => {
-        alert("Custom recipe copied to clipboard! Opening Messenger...");
-        window.open(messengerProfileUrl, '_blank');
-      }).catch(() => { window.open(messengerProfileUrl, '_blank'); });
+      let messengerUrl = `https://m.me/${pageId}?text=${encodeURIComponent(orderMessage)}`;
+      window.location.href = messengerUrl;
     }
 
     function addToCart(name, price, image) {
@@ -1812,7 +1811,8 @@
         return; 
       }
       
-      const messengerProfileUrl = "https://www.facebook.com/share/1QPPPz22Bi/"; 
+      // Updated direct Messenger click-to-chat URL with pre-filled text
+      const pageId = "1269798289555332";
       let orderMessage = "Hello ALIRY Flower Studio! I would like to place an order for the selected items:\n\n";
       let totalPrice = 0;
       
@@ -1823,10 +1823,8 @@
       
       orderMessage += `\nTotal Amount: ₱${totalPrice.toLocaleString()}\n\nPlease guide me with payment and delivery.`;
 
-      navigator.clipboard.writeText(orderMessage).then(() => {
-        alert("Order details copied to clipboard! Opening Messenger...");
-        window.open(messengerProfileUrl, '_blank');
-      }).catch(() => { window.open(messengerProfileUrl, '_blank'); });
+      let messengerUrl = `https://m.me/${pageId}?text=${encodeURIComponent(orderMessage)}`;
+      window.location.href = messengerUrl;
     }
   </script>
 
