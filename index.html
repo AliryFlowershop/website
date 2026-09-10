@@ -69,8 +69,8 @@
 
     .nav-main {
       padding: 12px 6%;
-      display: flex;
-      justify-content: space-between;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
       align-items: center;
       gap: 15px;
     }
@@ -84,7 +84,7 @@
       position: relative;
       padding: 2px 5px;
       border-radius: 8px;
-      flex-shrink: 0;
+      justify-self: start;
     }
 
     .logo-img {
@@ -121,19 +121,17 @@
       font-family: 'Playfair Display', serif;
       font-style: italic;
       color: var(--text-muted);
-      font-size: clamp(11px, 1.2vw, 14px);
-      letter-spacing: 0.5px;
+      font-size: clamp(12px, 1.3vw, 15px);
+      letter-spacing: 1px;
       white-space: nowrap;
-      text-align: center;
-      overflow: hidden;
-      text-overflow: ellipsis;
+      justify-self: center;
     }
 
     .nav-actions {
       display: flex;
       align-items: center;
       gap: 15px;
-      flex-shrink: 0;
+      justify-self: end;
     }
 
     .cart-btn {
@@ -451,6 +449,7 @@
       .img-container { height: 300px; }
       .logo-img { height: 32px; }
       .logo { font-size: 16px; letter-spacing: 2px; }
+      .catalog-title-badge { font-size: 11px; }
     }
   </style>
 </head>
@@ -471,7 +470,7 @@
         </div>
       </a>
 
-      <!-- Restored original "Flowers That Stay" header title text -->
+      <!-- Perfectly centered using CSS Grid -->
       <div class="catalog-title-badge">Flowers That Stay</div>
 
       <div class="nav-actions">
