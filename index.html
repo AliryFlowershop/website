@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ALIRY. Flower Studio | Luxury Flowers & Floral Gifts</title>
+  <title>ALIRY. Flower Studio | Product Catalog</title>
 
   <!-- Google Fonts Integration -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -55,7 +55,7 @@
       letter-spacing: 2px;
     }
 
-    /* NAVIGATION - Optimized footprint (Change 5) */
+    /* NAVIGATION */
     header {
       position: sticky;
       top: 0;
@@ -68,10 +68,11 @@
     }
 
     .nav-main {
-      padding: 8px 8%;
-      display: flex;
-      justify-content: space-between;
+      padding: 12px 6%;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
       align-items: center;
+      gap: 15px;
     }
 
     .logo-container {
@@ -83,105 +84,14 @@
       position: relative;
       padding: 2px 5px;
       border-radius: 8px;
-    }
-
-    .logo-bloom-wrapper {
-      position: relative;
-      display: flex;
-      align-items: center;
+      justify-self: start;
     }
 
     .logo-img {
-      height: clamp(45px, 5vw, 60px);
+      height: clamp(35px, 4vw, 45px);
       width: auto;
       object-fit: contain;
       mix-blend-mode: multiply;
-      position: relative;
-      z-index: 2;
-      transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
-    }
-
-    .logo-container:hover .logo-img {
-      transform: scale(1.04) rotate(-1deg);
-    }
-
-    /* MAGICAL BLOOM OVERLAY ANIMATION */
-    .bloom-svg-overlay {
-      position: absolute;
-      top: -45px;
-      left: -50px;
-      width: 160px;
-      height: 160px;
-      pointer-events: none;
-      z-index: 1;
-      opacity: 0;
-      transform: scale(0.6) rotate(-15deg);
-      transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
-    }
-
-    .logo-container:hover .bloom-svg-overlay {
-      opacity: 1;
-      transform: scale(1) rotate(0deg);
-    }
-
-    .magical-stem {
-      stroke: #914f61;
-      stroke-width: 2;
-      stroke-linecap: round;
-      fill: none;
-      stroke-dasharray: 120;
-      stroke-dashoffset: 120;
-      transition: stroke-dashoffset 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.1s;
-    }
-
-    .logo-container:hover .magical-stem {
-      stroke-dashoffset: 0;
-    }
-
-    .magical-branch {
-      stroke: #d8a0a6;
-      stroke-width: 1.5;
-      stroke-linecap: round;
-      fill: none;
-      stroke-dasharray: 60;
-      stroke-dashoffset: 60;
-      transition: stroke-dashoffset 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.3s;
-    }
-
-    .logo-container:hover .magical-branch {
-      stroke-dashoffset: 0;
-    }
-
-    .magical-petal {
-      fill: #f5cfd5;
-      stroke: #914f61;
-      stroke-width: 0.8;
-      transform: scale(0);
-      transform-origin: center;
-      transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) 0.5s;
-    }
-
-    .logo-container:hover .magical-petal {
-      transform: scale(1);
-    }
-
-    .magical-sparkle {
-      fill: #e6b800;
-      opacity: 0;
-      transform: scale(0);
-      transform-origin: center;
-      transition: all 0.5s ease 0.7s;
-    }
-
-    .logo-container:hover .magical-sparkle {
-      opacity: 1;
-      transform: scale(1.2);
-      animation: sparkleFloat 2s infinite ease-in-out alternate;
-    }
-
-    @keyframes sparkleFloat {
-      0% { transform: scale(1.1) translateY(0); }
-      100% { transform: scale(1.3) translateY(-3px); }
     }
 
     .logo-text {
@@ -191,71 +101,43 @@
 
     .logo {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(22px, 2vw, 28px);
+      font-size: clamp(18px, 1.8vw, 22px);
       font-weight: 700;
       color: var(--primary);
-      letter-spacing: 4px;
+      letter-spacing: 3px;
       line-height: 1;
     }
 
     .logo-text span:last-child {
-      font-size: 10px;
+      font-size: 8px;
       display: block;
       font-weight: 500;
-      letter-spacing: 4px;
+      letter-spacing: 2px;
       color: var(--text-muted);
       margin-top: 2px;
-      font-family: 'Plus Jakarta Sans', sans-serif;
     }
 
-    nav ul {
-      display: flex;
-      list-style: none;
-      gap: 25px;
-    }
-
-    nav a {
-      text-decoration: none;
-      color: var(--text-dark);
-      font-size: 13px;
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-weight: 500;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      position: relative;
-      padding-bottom: 4px;
-      transition: var(--transition-smooth);
-    }
-
-    nav a::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 0%;
-      height: 1.5px;
-      background: var(--primary);
-      transition: var(--transition-smooth);
-    }
-
-    nav a:hover {
-      color: var(--primary);
-    }
-
-    nav a:hover::after {
-      width: 100%;
+    .catalog-title-badge {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      color: var(--text-muted);
+      font-size: clamp(12px, 1.3vw, 15px);
+      letter-spacing: 1px;
+      white-space: nowrap;
+      justify-self: center;
     }
 
     .nav-actions {
       display: flex;
       align-items: center;
       gap: 15px;
+      justify-self: end;
     }
 
     .cart-btn {
       background: none;
       border: none;
-      font-size: 20px;
+      font-size: 22px;
       cursor: pointer;
       position: relative;
       color: var(--text-dark);
@@ -278,21 +160,12 @@
       padding: 2px 6px;
     }
 
-    .menu-toggle {
-      display: none;
-      background: none;
-      border: none;
-      font-size: 24px;
-      cursor: pointer;
-      color: var(--text-dark);
-    }
-
     .categories-bar {
       background: #f7eee9;
       display: flex;
       justify-content: center;
       gap: 15px;
-      padding: 8px 20px;
+      padding: 10px 20px;
       border-top: 1px solid var(--border-light);
       overflow-x: auto;
       -webkit-overflow-scrolling: touch;
@@ -310,7 +183,7 @@
       text-transform: uppercase;
       letter-spacing: 1.5px;
       cursor: pointer;
-      padding: 6px 14px;
+      padding: 6px 16px;
       border-radius: 20px;
     }
 
@@ -321,247 +194,22 @@
       box-shadow: 0 4px 12px rgba(145, 79, 97, 0.25);
     }
 
-    /* HERO - Above the fold optimization (Change 1) */
-    .hero {
-      min-height: 65vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 50px 20px;
-      background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), 
-                  url('https://images.unsplash.com/photo-1526047932273-341f2a7631f9?auto=format&fit=crop&w=2000&q=80') center center / cover no-repeat;
-      color: white;
-    }
-
-    .hero-content {
-      max-width: 850px;
-      animation: fadeInHero 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-    }
-
-    .hero h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(38px, 4vw, 64px);
-      margin-bottom: 15px;
-      font-weight: 400;
-      line-height: 1.15;
-    }
-
-    .hero p {
-      font-size: clamp(15px, 1.2vw, 19px);
-      margin-bottom: 25px;
-      font-weight: 300;
-      line-height: 1.5;
-      max-width: 700px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .btn-primary {
-      display: inline-block;
-      padding: 14px 34px;
-      background: var(--primary);
-      color: white;
-      text-decoration: none;
-      border-radius: 4px;
-      text-transform: uppercase;
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 2.5px;
-      transition: var(--transition-smooth);
-      border: none;
-      cursor: pointer;
-      box-shadow: 0 8px 20px rgba(145, 79, 97, 0.3);
-    }
-
-    .btn-primary:hover {
-      background: var(--primary-hover);
-      transform: translateY(-3px);
-    }
-
-    .trust-bar {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      padding: 30px 8%;
-      background: white;
-      border-bottom: 1px solid var(--border-light);
-      text-align: center;
-    }
-
-    .trust-item h4 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(15px, 1.2vw, 18px);
-      color: var(--primary);
-      margin-bottom: 4px;
-      font-weight: 600;
-    }
-
-    .trust-item p {
-      font-size: clamp(11px, 0.85vw, 13px);
-      color: var(--text-muted);
-    }
-
-    .story-section {
-      padding: 80px 8%;
-      background: #ffffff;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 50px;
-      align-items: center;
-      border-bottom: 1px solid var(--border-light);
-      scroll-margin-top: 110px;
-    }
-
-    .story-img-container {
-      width: 100%;
-      height: 400px;
-      border-radius: 8px;
-      overflow: hidden;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-    }
-
-    .story-img-container img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.8s ease;
-    }
-
-    .story-content h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(28px, 2.5vw, 40px);
-      color: var(--primary);
-      margin-bottom: 16px;
-      font-weight: 400;
-    }
-
-    .story-content p {
-      font-size: 14px;
-      color: var(--text-muted);
-      margin-bottom: 12px;
-      line-height: 1.7;
-    }
-
-    .story-full-content {
-      max-height: 140px;
-      overflow: hidden;
-      transition: max-height 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-      position: relative;
-    }
-
-    .story-full-content.expanded {
-      max-height: 1000px;
-    }
-
-    .story-fade-overlay {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 50px;
-      background: linear-gradient(transparent, #ffffff);
-      pointer-events: none;
-      transition: opacity 0.5s ease;
-    }
-
-    .story-full-content.expanded .story-fade-overlay {
-      opacity: 0;
-    }
-
-    /* BUILDER SECTION - Compact Streamlined Version (Change 4) */
-    .builder-section {
-      padding: 60px 8%;
-      background: #f7eee9;
-      scroll-margin-top: 110px;
-    }
-
-    .builder-coming-soon-card {
-      background: white;
-      border-radius: 10px;
-      padding: 40px 30px;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.03);
-      border: 1px solid var(--border-light);
-      text-align: center;
-      max-width: 700px;
-      margin: 0 auto;
-    }
-
-    .coming-soon-badge {
-      display: inline-block;
-      background: #f5cfd5;
-      color: var(--primary);
-      font-size: 10px;
-      text-transform: uppercase;
-      padding: 5px 12px;
-      letter-spacing: 2px;
-      font-weight: 700;
-      border-radius: 20px;
-      margin-bottom: 15px;
-    }
-
-    .builder-coming-soon-card h3 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(24px, 2.2vw, 32px);
-      color: var(--primary);
-      margin-bottom: 10px;
-      font-weight: 400;
-    }
-
-    .builder-coming-soon-card p {
-      font-size: clamp(14px, 1vw, 16px);
-      color: var(--text-dark);
-      margin-bottom: 8px;
-      font-weight: 500;
-    }
-
-    .builder-coming-soon-card .desc-sub {
-      font-size: 13px;
-      color: var(--text-muted);
-      margin-bottom: 20px;
-      line-height: 1.6;
-    }
-
-    .notify-form {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      max-width: 420px;
-      margin: 0 auto;
-    }
-
-    .notify-input {
-      flex: 1;
-      padding: 12px 16px;
-      border: 1px solid var(--border-light);
-      border-radius: 4px;
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: 12px;
-      background: var(--bg-cream);
-      color: var(--text-dark);
-      outline: none;
-      transition: var(--transition-smooth);
-    }
-
-    .notify-input:focus {
-      border-color: var(--primary);
-      background: white;
-    }
-
-    .section-padding {
-      padding: 80px 8%;
-      scroll-margin-top: 110px;
+    /* CATALOG CONTAINER */
+    .catalog-container {
+      padding: 40px 8% 80px;
+      min-height: 75vh;
     }
 
     .section-header {
       text-align: center;
-      margin-bottom: 50px;
+      margin-bottom: 40px;
     }
 
-    .section-header h2 {
+    .section-header h1 {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(30px, 2.8vw, 44px);
+      font-size: clamp(32px, 3vw, 44px);
       color: var(--primary);
-      margin-bottom: 10px;
+      margin-bottom: 8px;
       font-weight: 400;
     }
 
@@ -597,7 +245,6 @@
       border-color: rgba(145, 79, 97, 0.3);
     }
 
-    /* PRODUCT IMAGE ASPECT RATIOS - Fixed via Uniform Object-Fit Cover (Change 2) */
     .img-container {
       width: 100%;
       height: 340px;
@@ -611,7 +258,6 @@
       height: 100%;
       object-fit: cover;
       object-position: center;
-      padding: 0;
       transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
@@ -665,223 +311,44 @@
       margin-top: auto;
     }
 
-    .reviews-section {
-      background: #f7eee9;
-      text-align: center;
-      scroll-margin-top: 110px;
-    }
-
-    .reviews-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      max-width: 550px;
-      margin: 20px auto 0;
-    }
-
-    .review-card {
-      background: white;
-      padding: 40px 25px;
-      border-radius: 8px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.03);
-      text-align: center;
-    }
-
-    .stars {
-      color: #e6b800;
-      margin-bottom: 10px;
-      font-size: 18px;
-      letter-spacing: 4px;
-    }
-
-    .modal-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.5);
-      backdrop-filter: blur(5px);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      z-index: 2000;
-      padding: 20px;
-    }
-
-    .modal-overlay.active {
-      display: flex;
-    }
-
-    .modal-content {
-      background: white;
-      width: 100%;
-      max-width: 550px;
-      max-height: 80vh;
-      border-radius: 10px;
-      padding: 35px;
-      box-shadow: 0 15px 40px rgba(0,0,0,0.15);
-      overflow-y: auto;
-      position: relative;
-    }
-
-    .modal-close {
-      position: absolute;
-      top: 18px;
-      right: 22px;
-      background: none;
-      border: none;
-      font-size: 24px;
-      cursor: pointer;
-      color: var(--text-muted);
-      transition: var(--transition-smooth);
-    }
-
-    .modal-close:hover {
-      color: var(--primary);
-    }
-
-    .modal-content h3 {
-      font-family: 'Playfair Display', serif;
-      font-size: 24px;
-      color: var(--primary);
-      margin-bottom: 16px;
-    }
-
-    .modal-content p, .modal-content li {
-      font-size: 13px;
-      color: var(--text-muted);
-      margin-bottom: 12px;
-      line-height: 1.6;
-    }
-
-    .modal-content ul {
-      padding-left: 18px;
-      margin-bottom: 12px;
-    }
-
-    .social-icons-container {
-      display: flex;
-      gap: 10px;
-      margin-top: 12px;
-      border-radius: 30px;
-      padding: 4px;
-    }
-
-    .social-icon-link {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 38px;
-      height: 38px;
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      border-radius: 50%;
-      transition: var(--transition-smooth);
+    .btn-primary {
+      display: inline-block;
+      padding: 12px 24px;
+      background: var(--primary);
+      color: white;
       text-decoration: none;
-    }
-
-    .social-icon-link svg {
-      width: 18px;
-      height: 18px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 2.5px;
       transition: var(--transition-smooth);
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 8px 20px rgba(145, 79, 97, 0.3);
     }
 
-    .social-icon-link.facebook svg { fill: #1877F2; }
-    .social-icon-link.facebook:hover {
-      background: #1877F2;
-      border-color: #1877F2;
+    .btn-primary:hover {
+      background: var(--primary-hover);
       transform: translateY(-3px);
-      box-shadow: 0 6px 15px rgba(24, 119, 242, 0.4);
     }
-    .social-icon-link.facebook:hover svg { fill: #ffffff; }
 
-    .social-icon-link.tiktok svg { fill: #25F4EE; }
-    .social-icon-link.tiktok:hover {
-      background: #000000;
-      border-color: #25F4EE;
-      transform: translateY(-3px);
-      box-shadow: 0 6px 15px rgba(37, 244, 238, 0.3);
-    }
-    .social-icon-link.tiktok:hover svg { fill: #ffffff; }
-
-    .social-icon-link.instagram svg { fill: #E4405F; }
-    .social-icon-link.instagram:hover {
-      background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
-      border-color: #d6249f;
-      transform: translateY(-3px);
-      box-shadow: 0 6px 15px rgba(214, 36, 159, 0.4);
-    }
-    .social-icon-link.instagram:hover svg { fill: #ffffff; }
-
+    /* FOOTER / CATALOG INFO */
     footer {
       background: var(--text-dark);
       color: white;
-      padding: 60px 8% 25px;
-      scroll-margin-top: 110px;
+      padding: 40px 8% 20px;
+      text-align: center;
     }
-
-    .footer-col.highlight-contact {
-      animation: contactPulse 1.5s ease;
-      background: rgba(216, 160, 166, 0.15);
-      padding: 15px;
-      border-radius: 8px;
-      border: 1px solid var(--accent);
-    }
-
-    .social-icons-container.highlight-socials {
-      animation: socialGlowPulse 1.5s ease;
-      background: rgba(216, 160, 166, 0.25);
-      box-shadow: 0 0 25px 8px rgba(216, 160, 166, 0.5);
-    }
-
-    @keyframes contactPulse {
-      0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(216, 160, 166, 0.7); }
-      50% { transform: scale(1.03); box-shadow: 0 0 25px 8px rgba(216, 160, 166, 0.4); }
-      100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(216, 160, 166, 0); }
-    }
-
-    @keyframes socialGlowPulse {
-      0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(216, 160, 166, 0.8); }
-      50% { transform: scale(1.05); box-shadow: 0 0 30px 12px rgba(216, 160, 166, 0.6); }
-      100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(216, 160, 166, 0); }
-    }
-
-    .footer-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 35px;
-      margin-bottom: 40px;
-    }
-
-    .footer-col h4 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(15px, 1.1vw, 18px);
-      margin-bottom: 16px;
-      letter-spacing: 1.5px;
-      color: var(--accent);
-      font-weight: 600;
-    }
-
-    .footer-col ul { list-style: none; }
-    .footer-col li { margin-bottom: 10px; }
-
-    .footer-col a {
-      color: #ccc;
-      text-decoration: none;
-      font-size: 12px;
-      transition: var(--transition-smooth);
-    }
-
-    .footer-col a:hover { color: white; padding-left: 4px; }
 
     .footer-bottom {
       border-top: 1px solid #554444;
-      padding-top: 24px;
-      text-align: center;
+      padding-top: 20px;
       font-size: 11px;
       color: #aaa;
     }
 
+    /* CART DRAWER & OVERLAY */
     .overlay {
       position: fixed;
       top: 0;
@@ -894,23 +361,20 @@
       z-index: 1001;
     }
 
-    .cart-drawer, .mobile-nav {
+    .cart-drawer {
       position: fixed;
       top: 0;
+      right: -400px;
+      width: 380px;
+      height: 100%;
       background: white;
       z-index: 1002;
       transition: var(--transition-smooth);
       display: flex;
       flex-direction: column;
       box-shadow: -10px 0 30px rgba(0,0,0,0.1);
-      overflow-y: auto;
-    }
-
-    .cart-drawer {
-      right: -400px;
-      width: 380px;
-      height: 100%;
       padding: 25px;
+      overflow-y: auto;
     }
 
     .cart-drawer.active { right: 0; }
@@ -926,6 +390,7 @@
     .cart-header h3 {
       font-family: 'Playfair Display', serif;
       font-size: 20px;
+      color: var(--primary);
     }
 
     .close-btn {
@@ -971,56 +436,20 @@
       font-family: 'Playfair Display', serif;
     }
 
-    .mobile-nav {
-      left: -100%;
-      width: 75%;
-      max-width: 280px;
-      height: 100%;
-      padding: 25px;
-      z-index: 1003;
-    }
-
-    .mobile-nav.active { left: 0; }
-
-    .mobile-nav ul {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 18px;
-      margin-top: 30px;
-    }
-
-    .mobile-nav a {
-      text-decoration: none;
-      color: var(--text-dark);
-      font-size: 15px;
-      font-weight: 500;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-    }
-
-    @keyframes fadeInHero {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
     @media (max-width: 992px) {
-      .products-grid, .trust-bar, .footer-grid, .story-section {
+      .products-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 20px;
       }
-      .story-section { grid-template-columns: 1fr; }
     }
 
     @media (max-width: 768px) {
-      nav ul { display: none; }
-      .menu-toggle { display: block; }
-      .story-section { padding: 50px 5%; }
-      .products-grid, .trust-bar, .footer-grid { grid-template-columns: 1fr; }
+      .products-grid { grid-template-columns: 1fr; }
       .cart-drawer { width: 100%; right: -100%; }
       .img-container { height: 300px; }
-      .logo-img { height: 40px; }
-      .notify-form { flex-direction: column; }
+      .logo-img { height: 32px; }
+      .logo { font-size: 16px; letter-spacing: 2px; }
+      .catalog-title-badge { font-size: 11px; }
     }
   </style>
 </head>
@@ -1028,132 +457,41 @@
 <body>
 
   <div class="announcement-bar">
-    🌸 <i>Flower that stays</i>
+    🌸 <i>Exclusive Floral Product Catalog</i>
   </div>
 
   <header>
     <div class="nav-main">
-      <button class="menu-toggle" id="menuToggleBtn" aria-label="Open Mobile Menu">&#9776;</button>
-
-      <a href="#home" class="logo-container" onclick="resetToHome()">
-        <div class="logo-bloom-wrapper">
-          <svg class="bloom-svg-overlay" viewBox="0 0 120 120">
-            <path class="magical-stem" d="M30 90 Q 40 70, 50 50 T 60 25" />
-            <path class="magical-branch" d="M50 50 Q 35 45, 25 35" />
-            <path class="magical-branch" d="M45 62 Q 60 55, 72 45" />
-            <ellipse class="magical-petal" cx="25" cy="35" rx="5" ry="3" transform="rotate(-30 25 35)" />
-            <ellipse class="magical-petal" cx="72" cy="45" rx="5" ry="3" transform="rotate(30 72 45)" />
-            <g transform="translate(60, 22)">
-              <ellipse class="magical-petal" cx="0" cy="-12" rx="5" ry="9" />
-              <ellipse class="magical-petal" cx="10" cy="-6" rx="5" ry="9" transform="rotate(60 10 -6)" />
-              <ellipse class="magical-petal" cx="10" cy="6" rx="5" ry="9" transform="rotate(120 10 6)" />
-              <ellipse class="magical-petal" cx="0" cy="12" rx="5" ry="9" transform="rotate(180 0 12)" />
-              <ellipse class="magical-petal" cx="-10" cy="6" rx="5" ry="9" transform="rotate(240 -10 6)" />
-              <ellipse class="magical-petal" cx="-10" cy="-6" rx="5" ry="9" transform="rotate(300 -10 -6)" />
-              <circle cx="0" cy="0" r="4" fill="#914f61" />
-            </g>
-            <circle class="magical-sparkle" cx="50" cy="15" r="2" />
-            <circle class="magical-sparkle" cx="78" cy="30" r="1.5" />
-            <circle class="magical-sparkle" cx="20" cy="20" r="1.5" />
-          </svg>
-
-          <img src="logo2.jpg" alt="ALIRY. Flower Studio" class="logo-img" onerror="this.style.display='none';">
-        </div>
+      <a href="#" class="logo-container">
+        <img src="logo2.jpg" alt="ALIRY. Flower Studio" class="logo-img" onerror="this.style.display='none';">
         <div class="logo-text">
           <span class="logo">ALIRY.</span>
           <span>FLOWER STUDIO</span>
         </div>
       </a>
 
-      <nav>
-        <ul>
-          <li><a href="#home">Home</a></li>
-          <li><a href="#flowers">Occasions</a></li>
-          <li><a href="#about" onclick="expandStory(event)">Our Story</a></li>
-          <li><a href="#builder">Custom Builder</a></li>
-          <li><a href="#reviews">Reviews</a></li>
-          <li><a href="#contact" onclick="highlightContact()">Contact</a></li>
-        </ul>
-      </nav>
+      <!-- Perfectly centered using CSS Grid -->
+      <div class="catalog-title-badge">Flowers That Stay</div>
 
       <div class="nav-actions">
-        <button class="cart-btn" id="cartToggleBtn" aria-label="Open Cart">
+        <button class="cart-btn" id="cartToggleBtn" aria-label="Open Basket">
           🛒 <span class="cart-badge" id="cartBadge">0</span>
         </button>
       </div>
     </div>
 
     <div class="categories-bar">
-      <button class="category-tab active" onclick="filterCategory('all', this)">All</button>
+      <button class="category-tab active" onclick="filterCategory('all', this)">All Products</button>
       <button class="category-tab" onclick="filterCategory('preserved', this)">Preserve Bouquet</button>
       <button class="category-tab" onclick="filterCategory('customized', this)">Customized</button>
       <button class="category-tab" onclick="filterCategory('bestseller', this)">Best Seller</button>
     </div>
   </header>
 
-  <div class="mobile-nav" id="mobileNav">
-    <div style="display:flex; justify-content:space-between; align-items:center;">
-      <h3 style="font-family:'Playfair Display',serif; color:var(--primary);">ALIRY.</h3>
-      <button class="close-btn" id="closeMobileNav">&times;</button>
-    </div>
-    <ul>
-      <li><a href="#home" onclick="toggleMobileNav(); resetToHome();">Home</a></li>
-      <li><a href="#flowers" onclick="toggleMobileNav()">Occasions</a></li>
-      <li><a href="#about" onclick="toggleMobileNav(); expandStory();">Our Story</a></li>
-      <li><a href="#builder" onclick="toggleMobileNav()">Custom Builder</a></li>
-      <li><a href="#reviews" onclick="toggleMobileNav()">Reviews</a></li>
-      <li><a href="#contact" onclick="toggleMobileNav(); highlightContact();">Contact</a></li>
-    </ul>
-  </div>
-
-  <section class="hero" id="home">
-    <div class="hero-content">
-      <h1>Handcrafted Floral Arrangements</h1>
-      <p>Creating timeless dried, preserved, and bespoke bouquets, thoughtfully designed to turn special moments into lasting memories, with blooms made to last.</p>
-      <a href="#flowers" class="btn-primary">Order Flowers Now</a>
-    </div>
-  </section>
-
-  <div class="trust-bar">
-    <div class="trust-item">
-      <h4>Same Day Delivery</h4>
-      <p>Fast delivery across the area</p>
-    </div>
-    <div class="trust-item">
-      <h4>Lasting Beauty</h4>
-      <p>Preserved to last</p>
-    </div>
-    <div class="trust-item">
-      <h4>Handcrafted Daily</h4>
-      <p>Arranged by artisan florists</p>
-    </div>
-    <div class="trust-item">
-      <h4>Bespoke Cards</h4>
-      <p>Free personalized card included</p>
-    </div>
-  </div>
-
-  <section class="story-section" id="about">
-    <div class="story-img-container">
-      <img src="images/signature.jpg" onerror="this.src='https://images.unsplash.com/photo-1563241527-3004b7be0ffd?auto=format&fit=crop&w=800&q=80'" alt="Our Story Bouquet">
-    </div>
-    <div class="story-content">
-      <h2>Crafted with Dedication & Heart</h2>
-      <div class="story-full-content" id="storyFullContent">
-        <p>ALIRY Flower Studio began with a simple love for flowers and the joy of creating something beautiful by hand.</p>
-        <p>For us, every bouquet is more than an arrangement. It is a collection of carefully chosen flowers, colors, and details, brought together with thought and intention. We take our time with each creation because we believe the little things are what make a bouquet truly special.</p>
-        <p>Flowers have a quiet way of saying what words sometimes cannot. They can celebrate love, remember a milestone, brighten an ordinary day, or simply remind someone that they are thought of.</p>
-        <p>At ALIRY, we create floral arrangements that feel personal, timeless, and effortlessly elegant. Each piece is made with care, from the first flower chosen to the final detail, so that every bouquet becomes part of a moment worth remembering.</p>
-        <div class="story-fade-overlay" id="storyFadeOverlay"></div>
-      </div>
-      <a href="#flowers" class="btn-primary" style="margin-top: 15px;">Explore Collections</a>
-    </div>
-  </section>
-
-  <section class="section-padding" id="flowers">
+  <main class="catalog-container" id="catalog">
     <div class="section-header">
-      <h2>Bestselling Arrangements</h2>
-      <p>Thoughtfully curated blooms for life’s most meaningful moments.</p>
+      <h1>Our Arrangement Collection</h1>
+      <p>Browse our complete catalog of handcrafted dried, preserved, and bespoke floral gifts.</p>
     </div>
 
     <div class="products-grid">
@@ -1222,137 +560,19 @@
         </div>
       </div>
     </div>
-  </section>
+  </main>
 
-  <!-- COMING SOON BUILDER SECTION - Streamlined Compact Version (Change 4) -->
-  <section class="section-padding builder-section" id="builder">
-    <div class="builder-coming-soon-card">
-      <span class="coming-soon-badge">Coming Soon</span>
-      <h3>Build Your Own Bouquet</h3>
-      <p>Create a bouquet that's uniquely yours.</p>
-      <p class="desc-sub">Choose your flowers, wrapping, colors, and finishing touches. Our custom builder is currently in development.</p>
-      
-      <form class="notify-form" onsubmit="event.preventDefault(); alert('Thank you! We will notify you when the builder launches.');">
-        <input type="email" class="notify-input" placeholder="Enter your email for updates..." required>
-        <button type="submit" class="btn-primary" style="padding: 12px 20px; font-size: 10px;">Notify Me</button>
-      </form>
-    </div>
-  </section>
-
-  <section class="section-padding reviews-section" id="reviews">
-    <div class="section-header">
-      <h2>What Our Clients Say</h2>
-      <p>Share your floral journey with us.</p>
-    </div>
-
-    <div class="reviews-grid">
-      <div class="review-card">
-        <div class="stars">☆☆☆☆☆</div>
-        <h3 style="font-family: 'Playfair Display', serif; font-size: 22px; color: var(--primary); margin-bottom: 10px; font-weight: 500;">Be Our First Reviewer</h3>
-        <p style="font-style: normal; color: var(--text-muted); margin-bottom: 20px;">We have just blossomed and are ready to create magic for you. Order your first arrangement and leave your thoughts here!</p>
-        <a href="#flowers" class="btn-primary">Shop Our Collection</a>
-      </div>
-    </div>
-  </section>
-
-  <footer id="contact">
-    <div class="footer-grid">
-      <div class="footer-col" id="contactInfoCol">
-        <h4>ALIRY. FLOWER STUDIO</h4>
-        <p style="font-size:12px; color:#ccc; line-height:1.6; margin-bottom: 12px;">
-          We create long-lasting, highly personalized floral gifts for people who want something more meaningful than ordinary fresh flowers.
-        </p>
-        
-        <div class="social-icons-container" id="socialIconsContainer">
-          <a href="https://www.facebook.com/share/1QPPPz22Bi/" target="_blank" class="social-icon-link facebook" aria-label="Facebook">
-            <svg viewBox="0 0 24 24"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/></svg>
-          </a>
-          <a href="https://www.tiktok.com" target="_blank" class="social-icon-link tiktok" aria-label="TikTok">
-            <svg viewBox="0 0 24 24"><path d="M19.589 6.686a4.793 4.793 0 0 1-3.77-4.242V2h-3.445v13.672a2.896 2.896 0 0 1-5.01 1.953 2.892 2.892 0 0 1 1.025-4.444v-3.414a6.335 6.335 0 0 0-4.44 6.091 6.338 6.338 0 0 0 6.34 6.339 6.342 6.342 0 0 0 6.34-6.339V8.675a8.19 8.19 0 0 0 4.77 1.52v-3.47a4.795 4.795 0 0 1-2.25-0.039z"/></svg>
-          </a>
-          <a href="https://www.instagram.com/aliry.flowerstudio?stkn=MWp4eGdtd3JjcDE4NA==" target="_blank" class="social-icon-link instagram" aria-label="Instagram">
-            <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-          </a>
-        </div>
-      </div>
-
-      <div class="footer-col">
-        <h4>SHOP OCCASIONS</h4>
-        <ul>
-          <li><a href="#flowers" onclick="filterCategory('customized');">Customized</a></li>
-          <li><a href="#flowers" onclick="filterCategory('preserved');">Preserve Bouquet</a></li>
-          <li><a href="#flowers" onclick="filterCategory('bestseller');">Best Seller</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-col">
-        <h4>CUSTOMER CARE</h4>
-        <ul>
-          <li><a href="#" onclick="openModal('deliveryModal')">Delivery Information</a></li>
-          <li><a href="#" onclick="openModal('careModal')">Flower Care Guide</a></li>
-          <li><a href="#" onclick="openModal('termsModal')">Terms of Service</a></li>
-          <li><a href="#" onclick="openModal('privacyModal')">Privacy Policy</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-col">
-        <h4>CONTACT US</h4>
-        <p style="font-size:12px; color:#ccc; line-height:1.8;">
-          📍 Dasmariñas Cavite, Philippines<br>
-          📞 Phone: 0939-228-5049<br>
-          📧 Email: aliryflowerstudio@gmail.com
-        </p>
-      </div>
-    </div>
-
+  <footer>
     <div class="footer-bottom">
-      <p>© 2026 ALIRY. Flower Studio. All Rights Reserved.</p>
+      <p>© 2026 ALIRY. Flower Studio. All Rights Reserved. | Flowers That Stay</p>
     </div>
   </footer>
-
-  <div class="modal-overlay" id="deliveryModal">
-    <div class="modal-content">
-      <button class="modal-close" onclick="closeModal('deliveryModal')">&times;</button>
-      <h3>Delivery Information</h3>
-      <p>At ALIRY. Flower Studio, we make sure every order arrives securely and on time.</p>
-      <ul>
-        <li><strong>Same-Day Delivery:</strong> Available for orders confirmed before 2:00 PM within Dasmariñas, Cavite and nearby areas.</li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="modal-overlay" id="careModal">
-    <div class="modal-content">
-      <button class="modal-close" onclick="closeModal('careModal')">&times;</button>
-      <h3>Flower Care Guide</h3>
-      <p>Keep your handmade blooms looking pristine:</p>
-      <ul>
-        <li><strong>Preserved & Dried Flowers:</strong> Keep away from direct sunlight, high humidity, and water.</li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="modal-overlay" id="termsModal">
-    <div class="modal-content">
-      <button class="modal-close" onclick="closeModal('termsModal')">&times;</button>
-      <h3>Terms of Service</h3>
-      <p>By placing an order with us, you agree to our policies regarding custom handcrafted variations and confirmation steps.</p>
-    </div>
-  </div>
-
-  <div class="modal-overlay" id="privacyModal">
-    <div class="modal-content">
-      <button class="modal-close" onclick="closeModal('privacyModal')">&times;</button>
-      <h3>Privacy Policy</h3>
-      <p>We collect only necessary information to process and deliver your orders securely.</p>
-    </div>
-  </div>
 
   <div class="overlay" id="overlay"></div>
 
   <aside class="cart-drawer" id="cartDrawer">
     <div class="cart-header">
-      <h3 style="color:var(--primary); font-weight:normal;">Your Shopping Basket</h3>
+      <h3>Your Basket</h3>
       <button class="close-btn" id="closeCartBtn">&times;</button>
     </div>
     
@@ -1369,72 +589,30 @@
         <span>Total:</span>
         <span id="cartTotal">₱0</span>
       </div>
-      <button class="btn-primary" style="width:100%; text-align:center;" onclick="proceedToMessengerCheckout()">Complete Purchase</button>
+      <button class="btn-primary" style="width:100%; text-align:center;" onclick="proceedToMessengerCheckout()">Complete Purchase via Messenger</button>
     </div>
   </aside>
 
   <script>
-    // Cart Persistence Initialization (Change 3)
-    let cart = JSON.parse(localStorage.getItem('aliry_cart')) || [];
+    let cart = JSON.parse(localStorage.getItem('aliry_catalog_cart')) || [];
 
     const overlay = document.getElementById('overlay');
     const cartDrawer = document.getElementById('cartDrawer');
     const cartToggleBtn = document.getElementById('cartToggleBtn');
     const closeCartBtn = document.getElementById('closeCartBtn');
-    const menuToggleBtn = document.getElementById('menuToggleBtn');
-    const mobileNav = document.getElementById('mobileNav');
-    const closeMobileNav = document.getElementById('closeMobileNav');
 
     cartToggleBtn.addEventListener('click', toggleCart);
     closeCartBtn.addEventListener('click', toggleCart);
     overlay.addEventListener('click', () => {
       if (cartDrawer.classList.contains('active')) toggleCart();
-      if (mobileNav.classList.contains('active')) toggleMobileNav();
     });
 
-    menuToggleBtn.addEventListener('click', toggleMobileNav);
-    closeMobileNav.addEventListener('click', toggleMobileNav);
-
-    // Initial UI Sync on Load
     updateCartUI();
 
     function toggleCart() {
       cartDrawer.classList.toggle('active');
-      overlay.style.display = cartDrawer.classList.contains('active') || mobileNav.classList.contains('active') ? 'block' : 'none';
+      overlay.style.display = cartDrawer.classList.contains('active') ? 'block' : 'none';
     }
-
-    function toggleMobileNav() {
-      mobileNav.classList.toggle('active');
-      overlay.style.display = mobileNav.classList.contains('active') || cartDrawer.classList.contains('active') ? 'block' : 'none';
-    }
-
-    function resetToHome() {
-      filterCategory('all', document.querySelector('.category-tab'));
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    function expandStory(event) {
-      if (event) event.preventDefault();
-      const storySection = document.getElementById('about');
-      const storyContent = document.getElementById('storyFullContent');
-      
-      storySection.scrollIntoView({ behavior: 'smooth' });
-      storyContent.classList.add('expanded');
-    }
-
-    function highlightContact() {
-      const contactCol = document.getElementById('contactInfoCol');
-      const socialContainer = document.getElementById('socialIconsContainer');
-      contactCol.classList.add('highlight-contact');
-      socialContainer.classList.add('highlight-socials');
-      setTimeout(() => { 
-        contactCol.classList.remove('highlight-contact'); 
-        socialContainer.classList.remove('highlight-socials'); 
-      }, 1800);
-    }
-
-    function openModal(modalId) { document.getElementById(modalId).classList.add('active'); }
-    function closeModal(modalId) { document.getElementById(modalId).classList.remove('active'); }
 
     function addToCart(name, price, image) {
       const existing = cart.find(item => item.name === name);
@@ -1462,8 +640,7 @@
     }
 
     function updateCartUI() {
-      // Save cart state to localStorage (Change 3)
-      localStorage.setItem('aliry_cart', JSON.stringify(cart));
+      localStorage.setItem('aliry_catalog_cart', JSON.stringify(cart));
 
       const cartItemsContainer = document.getElementById('cartItems');
       const cartBadge = document.getElementById('cartBadge');
@@ -1526,7 +703,6 @@
         if (category === 'all' || cardCategories.includes(category)) card.classList.remove('hidden');
         else card.classList.add('hidden');
       });
-      document.getElementById('flowers').scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 
     function proceedToMessengerCheckout() {
@@ -1537,7 +713,7 @@
       }
       
       const pageId = "1269798289555332";
-      let orderMessage = "Hello ALIRY Flower Studio! I would like to place an order for the selected items:\n\n";
+      let orderMessage = "Hello ALIRY Flower Studio! I would like to place an order from your product catalog for the selected items:\n\n";
       let totalPrice = 0;
       
       activeItems.forEach((item, index) => {
